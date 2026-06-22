@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#8b5cf6" />
+  <meta name="theme-color" content="#8b5cf6" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="apple-touch-icon" href="icon-192.svg" />
-  <title>MyLife Planner PWA v1.6</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-title" content="MyLife">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <title>MyLife Planner PWA v1.8</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,6 +98,72 @@
     }
     h1{font-size:25px;margin:0;line-height:1.05;font-family:'Manrope',sans-serif;font-weight:800}
     .version{font-size:12px;color:var(--muted);margin-top:4px}
+
+
+    .logo{
+      background:var(--logo-bg)!important;
+      box-shadow:0 10px 25px rgba(0,0,0,.08);
+      color:var(--primary)!important;
+      border:1px solid var(--line);
+    }
+    .mandala-logo{
+      width:34px;
+      height:34px;
+      display:block;
+    }
+    body.mode-dark{
+      --bg:#0f172a;
+      --card:#111827;
+      --text:#f8fafc;
+      --muted:#cbd5e1;
+      --line:#263247;
+      --soft:rgba(255,255,255,.08);
+      --logo-bg:#0b1220;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(139,92,246,.18) 0, transparent 34%),
+        radial-gradient(circle at 100% 12%, rgba(236,72,153,.13) 0, transparent 30%),
+        var(--bg)!important;
+    }
+    body.mode-dark .card,
+    body.mode-dark .tab.active,
+    body.mode-dark .bottom-nav,
+    body.mode-dark input,
+    body.mode-dark select,
+    body.mode-dark textarea,
+    body.mode-dark .quick button,
+    body.mode-dark .language-btn,
+    body.mode-dark .theme-btn,
+    body.mode-dark .radius-btn,
+    body.mode-dark .cal-day{
+      background:rgba(17,24,39,.92)!important;
+      color:var(--text)!important;
+      border-color:var(--line)!important;
+    }
+    body.mode-dark .tabs{
+      background:rgba(15,23,42,.82)!important;
+    }
+    body.mode-dark .event{
+      border-color:var(--line)!important;
+    }
+    body.mode-dark .stat{
+      background:linear-gradient(180deg,#111827,#0b1220)!important;
+      border-color:var(--line)!important;
+    }
+    body.mode-dark .date-pill,
+    body.mode-dark .badge{
+      background:rgba(255,255,255,.07)!important;
+      border-color:var(--line)!important;
+    }
+    body.mode-dark .cal-day.empty{
+      background:transparent!important;
+    }
+    body.mode-dark .btn.secondary{
+      background:rgba(255,255,255,.06)!important;
+      color:var(--text)!important;
+    }
+    body:not(.mode-dark){
+      --logo-bg:#ffffff;
+    }
 
     .icon{
       width:22px;height:22px;
@@ -431,6 +505,32 @@
     }
 
 
+
+    .appearance-options{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+    .appearance-btn{
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--text);
+      border-radius:var(--radius-small);
+      padding:13px 12px;
+      font-weight:900;
+      cursor:pointer;
+      text-align:left;
+    }
+    .appearance-btn.active{
+      background:var(--soft);
+      color:var(--primary-dark);
+      border-color:var(--primary);
+      box-shadow:0 10px 22px rgba(90,48,150,.10);
+    }
+    @media(max-width:820px){
+      .appearance-options{grid-template-columns:1fr}
+    }
+
     .theme-options,.radius-options{
       display:grid;
       grid-template-columns:repeat(2,1fr);
@@ -503,10 +603,28 @@
   <div class="app">
     <header>
       <div class="brand">
-        <div class="logo">✦</div>
+        <div class="logo">
+      <svg class="mandala-logo" viewBox="0 0 64 64" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M32 6C25 15 25 22 32 31C39 22 39 15 32 6Z"/>
+          <path d="M32 58C39 49 39 42 32 33C25 42 25 49 32 58Z"/>
+          <path d="M6 32C15 25 22 25 31 32C22 39 15 39 6 32Z"/>
+          <path d="M58 32C49 39 42 39 33 32C42 25 49 25 58 32Z"/>
+          <path d="M14 14C25 15 30 20 32 31C21 29 16 24 14 14Z"/>
+          <path d="M50 14C49 25 44 30 33 32C35 21 40 16 50 14Z"/>
+          <path d="M14 50C15 39 20 34 31 32C29 43 24 48 14 50Z"/>
+          <path d="M50 50C39 49 34 44 32 33C43 35 48 40 50 50Z"/>
+        </g>
+        <circle cx="32" cy="32" r="3.2" fill="currentColor"/>
+        <circle cx="32" cy="3.8" r="2" fill="currentColor"/>
+        <circle cx="32" cy="60.2" r="2" fill="currentColor"/>
+        <circle cx="3.8" cy="32" r="2" fill="currentColor"/>
+        <circle cx="60.2" cy="32" r="2" fill="currentColor"/>
+      </svg>
+    </div>
         <div>
           <h1 data-i18n="appName">MyLife Planner</h1>
-          <div class="version"><span data-i18n="versionText">Kalendarz i organizer PWA v1.6</span></div>
+          <div class="version"><span data-i18n="versionText">Kalendarz i organizer PWA v1.8</span></div>
         </div>
       </div>
       <div class="date-pill" id="todayPill"></div>
@@ -656,6 +774,19 @@
             </div>
           </div>
 
+
+          <div>
+            <label data-i18n="appearanceLabel">Tryb wyglądu</label>
+            <div class="appearance-options">
+              <button class="appearance-btn" data-appearance="light" data-i18n="appearanceLight">Jasny</button>
+              <button class="appearance-btn" data-appearance="dark" data-i18n="appearanceDark">Ciemny</button>
+              <button class="appearance-btn" data-appearance="system" data-i18n="appearanceSystem">Systemowy</button>
+            </div>
+            <div class="small-note" data-i18n="appearanceNote">
+              Tryb ciemny jest wygodny wieczorem i lepiej wygląda na ekranach OLED.
+            </div>
+          </div>
+
           <div>
             <label data-i18n="themeLabel">Motyw kolorystyczny</label>
             <div class="theme-options">
@@ -693,7 +824,7 @@
         <h2>D.K Apps</h2>
         <div style="text-align:center;padding:20px 10px;">
           <div style="font-size:28px;font-weight:900;">MyLife Planner</div>
-          <div style="margin-top:8px;color:#666;">Version 1.6</div>
+          <div style="margin-top:8px;color:#666;">Version 1.8</div>
           <div style="margin-top:24px;font-weight:800;">Developed by</div>
           <div style="font-size:22px;font-weight:900;margin-top:8px;">D.K Apps</div>
           <div>Dariusz Kaniewski</div>
@@ -742,6 +873,8 @@
 
     const LANG_KEY = "mylife_planner_v1_lang";
     let currentLang = localStorage.getItem(LANG_KEY) || "pl";
+    const APPEARANCE_KEY = "mylife_planner_v1_appearance";
+    let currentAppearance = localStorage.getItem(APPEARANCE_KEY) || "light";
     const THEME_KEY = "mylife_planner_v1_theme";
     const RADIUS_KEY = "mylife_planner_v1_radius";
     let currentTheme = localStorage.getItem(THEME_KEY) || "lavender";
@@ -750,7 +883,7 @@
     const translations = {
       pl:{
         appName:"MyLife Planner",
-        versionText:"Kalendarz i organizer PWA v1.6",
+        versionText:"Kalendarz i organizer PWA v1.8",
         navToday:"Dzisiaj",
         navAdd:"Dodaj",
         navCalendar:"Kalendarz",
@@ -760,6 +893,11 @@
         settingsTitle:"Ustawienia",
         languageLabel:"Język aplikacji",
         languageNote:"Wybrany język zostanie zapamiętany w tym telefonie/przeglądarce.",
+        appearanceLabel:"Tryb wyglądu",
+        appearanceLight:"Jasny",
+        appearanceDark:"Ciemny",
+        appearanceSystem:"Systemowy",
+        appearanceNote:"Tryb ciemny jest wygodny wieczorem i lepiej wygląda na ekranach OLED.",
         themeLabel:"Motyw kolorystyczny",
         themeNote:"Motyw pozwala dopasować organizer do własnego stylu — bardziej delikatny albo bardziej neutralny.",
         radiusLabel:"Styl okien",
@@ -773,7 +911,7 @@
       },
       en:{
         appName:"MyLife Planner",
-        versionText:"Calendar and Organizer PWA v1.6",
+        versionText:"Calendar and Organizer PWA v1.8",
         navToday:"Today",
         navAdd:"Add",
         navCalendar:"Calendar",
@@ -783,6 +921,11 @@
         settingsTitle:"Settings",
         languageLabel:"App language",
         languageNote:"The selected language will be saved on this phone/browser.",
+        appearanceLabel:"Appearance mode",
+        appearanceLight:"Light",
+        appearanceDark:"Dark",
+        appearanceSystem:"System",
+        appearanceNote:"Dark mode is comfortable in the evening and works well on OLED screens.",
         themeLabel:"Color theme",
         themeNote:"The theme lets you adjust the organizer to your style — softer or more neutral.",
         radiusLabel:"Window style",
@@ -800,11 +943,38 @@
       return translations[currentLang][key] || translations.pl[key] || key;
     }
 
+    function systemPrefersDark(){
+      return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+
+    function applyAppearance(){
+      const isDark = currentAppearance === "dark" || (currentAppearance === "system" && systemPrefersDark());
+      document.body.classList.toggle("mode-dark", isDark);
+      document.querySelectorAll(".appearance-btn").forEach(btn=>{
+        btn.classList.toggle("active", btn.dataset.appearance === currentAppearance);
+      });
+    }
+
     function applyTheme(){
       const themes = ["lavender","ocean","forest","sunset","rose","graphite"];
       document.body.classList.remove(...themes.map(x=>"theme-"+x));
       if(currentTheme !== "lavender") document.body.classList.add("theme-"+currentTheme);
-      document.querySelectorAll(".theme-btn").forEach(btn=>{
+      document.querySelectorAll(".appearance-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        currentAppearance = btn.dataset.appearance;
+        localStorage.setItem(APPEARANCE_KEY, currentAppearance);
+        applyAppearance();
+        showToast(currentLang === "pl" ? "Zmieniono tryb wyglądu" : "Appearance changed");
+      });
+    });
+
+    if(window.matchMedia){
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{
+        if(currentAppearance === "system") applyAppearance();
+      });
+    }
+
+    document.querySelectorAll(".theme-btn").forEach(btn=>{
         btn.classList.toggle("active", btn.dataset.theme === currentTheme);
       });
     }
@@ -1182,30 +1352,20 @@
       btn.addEventListener("click",()=>{
         currentLang = btn.dataset.lang;
         localStorage.setItem(LANG_KEY, currentLang);
-        document.querySelectorAll(".theme-btn").forEach(btn=>{
+        document.querySelectorAll(".appearance-btn").forEach(btn=>{
       btn.addEventListener("click",()=>{
-        currentTheme = btn.dataset.theme;
-        localStorage.setItem(THEME_KEY, currentTheme);
-        applyTheme();
-        showToast(currentLang === "pl" ? "Zmieniono motyw" : "Theme changed");
+        currentAppearance = btn.dataset.appearance;
+        localStorage.setItem(APPEARANCE_KEY, currentAppearance);
+        applyAppearance();
+        showToast(currentLang === "pl" ? "Zmieniono tryb wyglądu" : "Appearance changed");
       });
     });
 
-    document.querySelectorAll(".radius-btn").forEach(btn=>{
-      btn.addEventListener("click",()=>{
-        currentRadius = btn.dataset.radius;
-        localStorage.setItem(RADIUS_KEY, currentRadius);
-        applyRadius();
-        showToast(currentLang === "pl" ? "Zmieniono styl okien" : "Window style changed");
+    if(window.matchMedia){
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{
+        if(currentAppearance === "system") applyAppearance();
       });
-    });
-
-    applyTheme();
-    applyRadius();
-    applyLanguage();
-        showToast(currentLang === "pl" ? "Zmieniono język" : "Language changed");
-      });
-    });
+    }
 
     document.querySelectorAll(".theme-btn").forEach(btn=>{
       btn.addEventListener("click",()=>{
@@ -1225,6 +1385,48 @@
       });
     });
 
+    applyAppearance();
+    applyTheme();
+    applyRadius();
+    applyLanguage();
+        showToast(currentLang === "pl" ? "Zmieniono język" : "Language changed");
+      });
+    });
+
+    document.querySelectorAll(".appearance-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        currentAppearance = btn.dataset.appearance;
+        localStorage.setItem(APPEARANCE_KEY, currentAppearance);
+        applyAppearance();
+        showToast(currentLang === "pl" ? "Zmieniono tryb wyglądu" : "Appearance changed");
+      });
+    });
+
+    if(window.matchMedia){
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{
+        if(currentAppearance === "system") applyAppearance();
+      });
+    }
+
+    document.querySelectorAll(".theme-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        currentTheme = btn.dataset.theme;
+        localStorage.setItem(THEME_KEY, currentTheme);
+        applyTheme();
+        showToast(currentLang === "pl" ? "Zmieniono motyw" : "Theme changed");
+      });
+    });
+
+    document.querySelectorAll(".radius-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        currentRadius = btn.dataset.radius;
+        localStorage.setItem(RADIUS_KEY, currentRadius);
+        applyRadius();
+        showToast(currentLang === "pl" ? "Zmieniono styl okien" : "Window style changed");
+      });
+    });
+
+    applyAppearance();
     applyTheme();
     applyRadius();
     applyLanguage();
@@ -1337,30 +1539,20 @@
       btn.addEventListener("click",()=>{
         currentLang = btn.dataset.lang;
         localStorage.setItem(LANG_KEY, currentLang);
-        document.querySelectorAll(".theme-btn").forEach(btn=>{
+        document.querySelectorAll(".appearance-btn").forEach(btn=>{
       btn.addEventListener("click",()=>{
-        currentTheme = btn.dataset.theme;
-        localStorage.setItem(THEME_KEY, currentTheme);
-        applyTheme();
-        showToast(currentLang === "pl" ? "Zmieniono motyw" : "Theme changed");
+        currentAppearance = btn.dataset.appearance;
+        localStorage.setItem(APPEARANCE_KEY, currentAppearance);
+        applyAppearance();
+        showToast(currentLang === "pl" ? "Zmieniono tryb wyglądu" : "Appearance changed");
       });
     });
 
-    document.querySelectorAll(".radius-btn").forEach(btn=>{
-      btn.addEventListener("click",()=>{
-        currentRadius = btn.dataset.radius;
-        localStorage.setItem(RADIUS_KEY, currentRadius);
-        applyRadius();
-        showToast(currentLang === "pl" ? "Zmieniono styl okien" : "Window style changed");
+    if(window.matchMedia){
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{
+        if(currentAppearance === "system") applyAppearance();
       });
-    });
-
-    applyTheme();
-    applyRadius();
-    applyLanguage();
-        showToast(currentLang === "pl" ? "Zmieniono język" : "Language changed");
-      });
-    });
+    }
 
     document.querySelectorAll(".theme-btn").forEach(btn=>{
       btn.addEventListener("click",()=>{
@@ -1380,6 +1572,48 @@
       });
     });
 
+    applyAppearance();
+    applyTheme();
+    applyRadius();
+    applyLanguage();
+        showToast(currentLang === "pl" ? "Zmieniono język" : "Language changed");
+      });
+    });
+
+    document.querySelectorAll(".appearance-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        currentAppearance = btn.dataset.appearance;
+        localStorage.setItem(APPEARANCE_KEY, currentAppearance);
+        applyAppearance();
+        showToast(currentLang === "pl" ? "Zmieniono tryb wyglądu" : "Appearance changed");
+      });
+    });
+
+    if(window.matchMedia){
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{
+        if(currentAppearance === "system") applyAppearance();
+      });
+    }
+
+    document.querySelectorAll(".theme-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        currentTheme = btn.dataset.theme;
+        localStorage.setItem(THEME_KEY, currentTheme);
+        applyTheme();
+        showToast(currentLang === "pl" ? "Zmieniono motyw" : "Theme changed");
+      });
+    });
+
+    document.querySelectorAll(".radius-btn").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        currentRadius = btn.dataset.radius;
+        localStorage.setItem(RADIUS_KEY, currentRadius);
+        applyRadius();
+        showToast(currentLang === "pl" ? "Zmieniono styl okien" : "Window style changed");
+      });
+    });
+
+    applyAppearance();
     applyTheme();
     applyRadius();
     applyLanguage();
