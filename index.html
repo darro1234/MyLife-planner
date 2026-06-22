@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-  <title>MyLife Planner PWA v1.8.3</title>
+  <title>MyLife Planner PWA v1.8.4</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -345,8 +345,8 @@
     }
     .empty{
       color:var(--muted);
-      background:#fff;
-      border:1px dashed #d8c7ef;
+      background:var(--card);
+      border:1px dashed var(--line);
       border-radius:var(--radius-small);
       padding:18px;
       text-align:center;
@@ -640,6 +640,141 @@
       opacity:.48;
     }
 
+
+    /* v1.8.4 Dark Mode Fix — original colors preserved */
+    html,
+    body{
+      min-height:100%;
+    }
+
+    html:has(body.mode-dark),
+    body.mode-dark{
+      background:
+        radial-gradient(circle at 20% 0%, rgba(139,92,246,.18) 0, transparent 34%),
+        radial-gradient(circle at 100% 12%, rgba(236,72,153,.13) 0, transparent 30%),
+        #0f172a!important;
+      background-color:#0f172a!important;
+      color:#f8fafc!important;
+    }
+
+    body.mode-dark .app{
+      background:transparent!important;
+    }
+
+    body.mode-dark .card,
+    body.mode-dark .stat,
+    body.mode-dark .tabs,
+    body.mode-dark .bottom-nav,
+    body.mode-dark input,
+    body.mode-dark select,
+    body.mode-dark textarea,
+    body.mode-dark .quick button,
+    body.mode-dark .language-btn,
+    body.mode-dark .appearance-btn,
+    body.mode-dark .theme-btn,
+    body.mode-dark .radius-btn,
+    body.mode-dark .cal-day{
+      background:rgba(17,24,39,.92)!important;
+      background-color:rgba(17,24,39,.92)!important;
+      color:#f8fafc!important;
+      border-color:#263247!important;
+    }
+
+    body.mode-dark .empty,
+    body.mode-dark #todayList .empty,
+    body.mode-dark #upcomingList .empty,
+    body.mode-dark #selectedDayList .empty,
+    body.mode-dark #doneList .empty,
+    body.mode-dark #allList .empty{
+      background:rgba(255,255,255,.04)!important;
+      background-color:rgba(255,255,255,.04)!important;
+      border:1px dashed rgba(148,163,184,.32)!important;
+      color:#94a3b8!important;
+      box-shadow:none!important;
+    }
+
+    body.mode-dark .cal-day.empty{
+      background:transparent!important;
+      background-color:transparent!important;
+      border:0!important;
+      box-shadow:none!important;
+    }
+
+    body.mode-dark .event{
+      border-color:#263247!important;
+    }
+
+    body.mode-dark .date-pill,
+    body.mode-dark .badge,
+    body.mode-dark .btn.secondary,
+    body.mode-dark .calendar-nav{
+      background:rgba(255,255,255,.07)!important;
+      background-color:rgba(255,255,255,.07)!important;
+      border-color:#263247!important;
+      color:#f8fafc!important;
+    }
+
+    body.mode-dark .tab.active,
+    body.mode-dark .bottom-nav button.active,
+    body.mode-dark .language-btn.active,
+    body.mode-dark .appearance-btn.active,
+    body.mode-dark .theme-btn.active,
+    body.mode-dark .radius-btn.active,
+    body.mode-dark .cal-day.selected{
+      background:color-mix(in srgb, var(--primary) 18%, #111827)!important;
+      background-color:color-mix(in srgb, var(--primary) 18%, #111827)!important;
+      color:#ffffff!important;
+      border-color:var(--primary)!important;
+      box-shadow:0 0 0 1px color-mix(in srgb, var(--primary) 38%, transparent)!important;
+    }
+
+    body.mode-dark input:focus,
+    body.mode-dark select:focus,
+    body.mode-dark textarea:focus,
+    body.mode-dark .quick button:focus,
+    body.mode-dark .language-btn:focus,
+    body.mode-dark .appearance-btn:focus,
+    body.mode-dark .theme-btn:focus,
+    body.mode-dark .radius-btn:focus,
+    body.mode-dark .calendar-nav:focus,
+    body.mode-dark .cal-day:focus,
+    body.mode-dark button:focus-visible{
+      outline:none!important;
+      border-color:var(--primary)!important;
+      box-shadow:0 0 0 3px color-mix(in srgb, var(--primary) 28%, transparent)!important;
+    }
+
+    body.mode-dark .mini.done{
+      background:rgba(36,160,100,.18)!important;
+      color:#86efac!important;
+    }
+
+    body.mode-dark .mini.delete{
+      background:rgba(224,86,86,.16)!important;
+      color:#fca5a5!important;
+    }
+
+    body.mode-dark .logo{
+      background:#0b1220!important;
+      background-color:#0b1220!important;
+      color:var(--primary)!important;
+      border-color:#263247!important;
+    }
+
+    body.mode-dark .site-footer{
+      color:#94a3b8!important;
+      opacity:.65!important;
+    }
+
+    body.mode-dark [style*="background:#fff"],
+    body.mode-dark [style*="background: #fff"],
+    body.mode-dark [style*="background:white"],
+    body.mode-dark [style*="background: white"]{
+      background:rgba(255,255,255,.04)!important;
+      background-color:rgba(255,255,255,.04)!important;
+      color:#94a3b8!important;
+    }
+
 </style>
 </head>
 <body>
@@ -667,7 +802,7 @@
     </div>
         <div>
           <h1 data-i18n="appName">MyLife Planner</h1>
-          <div class="version"><span data-i18n="versionText">Kalendarz i organizer PWA v1.8.3</span></div>
+          <div class="version"><span data-i18n="versionText">Kalendarz i organizer PWA v1.8.4</span></div>
         </div>
       </div>
       <div class="date-pill" id="todayPill"></div>
@@ -862,28 +997,10 @@
         </div>
       </div>
     </section>
-
-  
-    <section id="about" class="view hidden">
-      <div class="card">
-        <h2>D.K Apps</h2>
-        <div style="text-align:center;padding:20px 10px;">
-          <div style="font-size:28px;font-weight:900;">MyLife Planner</div>
-          <div style="margin-top:8px;color:#666;">Version 1.8.3</div>
-          <div style="margin-top:24px;font-weight:800;">Developed by</div>
-          <div style="font-size:22px;font-weight:900;margin-top:8px;">D.K Apps</div>
-          <div>Dariusz Kaniewski</div>
-          <div style="margin-top:20px;">© 2026 D.K Apps</div>
-          <div>All Rights Reserved</div>
-          <div style="margin-top:24px;font-style:italic;">Mniej chaosu. Więcej spokoju.</div>
-        </div>
-      </div>
-    </section>
-
 </div>
 
 
-  <div class="site-footer">© 2026 D.K Apps · All Rights Reserved</div>
+  <div class="site-footer">D.K Apps · © 2026</div>
 
   <nav class="bottom-nav">
     <button class="active" data-view="dashboard" data-i18n="navToday">Dzisiaj</button>
@@ -931,7 +1048,7 @@
     const translations = {
       pl:{
         appName:"MyLife Planner",
-        versionText:"Kalendarz i organizer PWA v1.8.3",
+        versionText:"Kalendarz i organizer PWA v1.8.4",
         navToday:"Dzisiaj",
         navAdd:"Dodaj",
         navCalendar:"Kalendarz",
@@ -959,7 +1076,7 @@
       },
       en:{
         appName:"MyLife Planner",
-        versionText:"Calendar and Organizer PWA v1.8.3",
+        versionText:"Calendar and Organizer PWA v1.8.4",
         navToday:"Today",
         navAdd:"Add",
         navCalendar:"Calendar",
