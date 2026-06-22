@@ -1,22 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="110" fill="#ffffff"/>
-  <g transform="translate(96 96) scale(5)" color="#6d5dfc">
-    
-<g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M32 6C25 15 25 22 32 31C39 22 39 15 32 6Z"/>
-  <path d="M32 58C39 49 39 42 32 33C25 42 25 49 32 58Z"/>
-  <path d="M6 32C15 25 22 25 31 32C22 39 15 39 6 32Z"/>
-  <path d="M58 32C49 39 42 39 33 32C42 25 49 25 58 32Z"/>
-  <path d="M14 14C25 15 30 20 32 31C21 29 16 24 14 14Z"/>
-  <path d="M50 14C49 25 44 30 33 32C35 21 40 16 50 14Z"/>
-  <path d="M14 50C15 39 20 34 31 32C29 43 24 48 14 50Z"/>
-  <path d="M50 50C39 49 34 44 32 33C43 35 48 40 50 50Z"/>
-</g>
-<circle cx="32" cy="32" r="3.2" fill="currentColor"/>
-<circle cx="32" cy="3.8" r="2" fill="currentColor"/>
-<circle cx="32" cy="60.2" r="2" fill="currentColor"/>
-<circle cx="3.8" cy="32" r="2" fill="currentColor"/>
-<circle cx="60.2" cy="32" r="2" fill="currentColor"/>
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="MyLife Planner">
+  <defs>
+    <linearGradient id="bg" x1="74" y1="58" x2="438" y2="462" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3b5bdb"/>
+      <stop offset=".55" stop-color="#7657d6"/>
+      <stop offset="1" stop-color="#0f9f8f"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="34%" cy="22%" r="72%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".32"/>
+      <stop offset=".62" stop-color="#ffffff" stop-opacity=".08"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <rect width="512" height="512" rx="112" fill="url(#shine)"/>
+  <circle cx="256" cy="256" r="156" fill="none" stroke="#ffffff" stroke-width="12" opacity=".16"/>
+  <circle cx="256" cy="256" r="82" fill="none" stroke="#ffffff" stroke-width="14" opacity=".34"/>
+  <g fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-width="17" d="M256 82c-43 54-43 102 0 160 43-58 43-106 0-160Z"/>
+    <path stroke-width="17" d="M256 430c43-54 43-102 0-160-43 58-43 106 0 160Z"/>
+    <path stroke-width="17" d="M82 256c54-43 102-43 160 0-58 43-106 43-160 0Z"/>
+    <path stroke-width="17" d="M430 256c-54 43-102 43-160 0 58-43 106-43 160 0Z"/>
+    <path stroke-width="13" d="M134 134c68 8 103 42 112 112-70-9-104-44-112-112Z"/>
+    <path stroke-width="13" d="M378 134c-8 68-42 103-112 112 9-70 44-104 112-112Z"/>
+    <path stroke-width="13" d="M134 378c8-68 42-103 112-112-9 70-44 104-112 112Z"/>
+    <path stroke-width="13" d="M378 378c-68-8-103-42-112-112 70 9 104 44 112 112Z"/>
+  </g>
+  <g fill="#ffffff">
+    <circle cx="256" cy="256" r="23"/>
+    <circle cx="256" cy="75" r="10" opacity=".95"/>
+    <circle cx="256" cy="437" r="10" opacity=".95"/>
+    <circle cx="75" cy="256" r="10" opacity=".95"/>
+    <circle cx="437" cy="256" r="10" opacity=".95"/>
+    <circle cx="128" cy="128" r="8" opacity=".82"/>
+    <circle cx="384" cy="128" r="8" opacity=".82"/>
+    <circle cx="128" cy="384" r="8" opacity=".82"/>
+    <circle cx="384" cy="384" r="8" opacity=".82"/>
   </g>
 </svg>

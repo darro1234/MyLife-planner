@@ -1,22 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#ffffff"/>
-  <g transform="translate(96 96) scale(5)" color="#6d3ee8">
-    
-        <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M32 6C25 15 25 22 32 31C39 22 39 15 32 6Z"/>
-          <path d="M32 58C39 49 39 42 32 33C25 42 25 49 32 58Z"/>
-          <path d="M6 32C15 25 22 25 31 32C22 39 15 39 6 32Z"/>
-          <path d="M58 32C49 39 42 39 33 32C42 25 49 25 58 32Z"/>
-          <path d="M14 14C25 15 30 20 32 31C21 29 16 24 14 14Z"/>
-          <path d="M50 14C49 25 44 30 33 32C35 21 40 16 50 14Z"/>
-          <path d="M14 50C15 39 20 34 31 32C29 43 24 48 14 50Z"/>
-          <path d="M50 50C39 49 34 44 32 33C43 35 48 40 50 50Z"/>
-        </g>
-        <circle cx="32" cy="32" r="3.2" fill="currentColor"/>
-        <circle cx="32" cy="3.8" r="2" fill="currentColor"/>
-        <circle cx="32" cy="60.2" r="2" fill="currentColor"/>
-        <circle cx="3.8" cy="32" r="2" fill="currentColor"/>
-        <circle cx="60.2" cy="32" r="2" fill="currentColor"/>
-      
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="MyLife mandala">
+  <defs>
+    <linearGradient id="mandalaStroke" x1="10" y1="8" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#3b5bdb"/>
+      <stop offset="0.55" stop-color="#7657d6"/>
+      <stop offset="1" stop-color="#0f9f8f"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#mandalaStroke)" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="32" cy="32" r="24.5" stroke-width="2.2" opacity=".28"/>
+    <circle cx="32" cy="32" r="12.4" stroke-width="2.4" opacity=".58"/>
+    <path stroke-width="2.9" d="M32 5.5c-6.6 8.2-6.6 15.6 0 24.5 6.6-8.9 6.6-16.3 0-24.5Z"/>
+    <path stroke-width="2.9" d="M32 58.5c6.6-8.2 6.6-15.6 0-24.5-6.6 8.9-6.6 16.3 0 24.5Z"/>
+    <path stroke-width="2.9" d="M5.5 32c8.2-6.6 15.6-6.6 24.5 0-8.9 6.6-16.3 6.6-24.5 0Z"/>
+    <path stroke-width="2.9" d="M58.5 32c-8.2 6.6-15.6 6.6-24.5 0 8.9-6.6 16.3-6.6 24.5 0Z"/>
+    <path stroke-width="2.35" d="M13.5 13.5c10.4 1.2 15.7 6.4 17.1 17.1-10.7-1.4-15.9-6.7-17.1-17.1Z"/>
+    <path stroke-width="2.35" d="M50.5 13.5c-1.2 10.4-6.4 15.7-17.1 17.1 1.4-10.7 6.7-15.9 17.1-17.1Z"/>
+    <path stroke-width="2.35" d="M13.5 50.5c1.2-10.4 6.4-15.7 17.1-17.1-1.4 10.7-6.7 15.9-17.1 17.1Z"/>
+    <path stroke-width="2.35" d="M50.5 50.5c-10.4-1.2-15.7-6.4-17.1-17.1 10.7 1.4 15.9 6.7 17.1 17.1Z"/>
+  </g>
+  <g fill="url(#mandalaStroke)">
+    <circle cx="32" cy="32" r="3.6"/>
+    <circle cx="32" cy="4.5" r="1.8"/>
+    <circle cx="32" cy="59.5" r="1.8"/>
+    <circle cx="4.5" cy="32" r="1.8"/>
+    <circle cx="59.5" cy="32" r="1.8"/>
+    <circle cx="12.6" cy="12.6" r="1.45" opacity=".82"/>
+    <circle cx="51.4" cy="12.6" r="1.45" opacity=".82"/>
+    <circle cx="12.6" cy="51.4" r="1.45" opacity=".82"/>
+    <circle cx="51.4" cy="51.4" r="1.45" opacity=".82"/>
   </g>
 </svg>
