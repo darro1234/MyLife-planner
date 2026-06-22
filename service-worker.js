@@ -1,11 +1,17 @@
-const CACHE_NAME = "mylife-planner-pwa-v1-7";
+const CACHE_NAME = "mylife-planner-pwa-v1-8";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
+  "./icon.svg",
   "./icon-192.svg",
   "./icon-512.svg",
-  "./icon-dark.svg",
+  "./icon-192.png",
+  "./icon-512.png",
+  "./apple-touch-icon.png",
+  "./favicon.svg",
+  "./favicon-32.png",
+  "./favicon-16.png",
   "./mandala-logo.svg"
 ];
 
