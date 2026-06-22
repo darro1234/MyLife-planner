@@ -171,19 +171,14 @@ button {
 .brand-mandala {
   width: 34px;
   height: 34px;
+  color: var(--primary);
   display: block;
-  filter: saturate(1.08);
-  transition: filter 0.18s ease;
 }
 
 .appearance-dark .brand-mark {
   background:
     radial-gradient(circle at 28% 20%, rgba(255, 255, 255, 0.12), transparent 34%),
     linear-gradient(145deg, color-mix(in srgb, var(--primary) 26%, var(--surface)), color-mix(in srgb, var(--accent) 18%, var(--surface)));
-}
-
-.appearance-dark .brand-mandala {
-  filter: saturate(1.18) brightness(1.08);
 }
 
 h1,
