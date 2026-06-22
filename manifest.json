@@ -1,7 +1,7 @@
 {
-  "name": "Mój Organizer",
-  "short_name": "Organizer",
-  "description": "Kalendarz i organizer ważnych spraw z widokiem miesiąca, ustawieniami języka i powiadomieniami.",
+  "name": "MyLife Planner",
+  "short_name": "Life+",
+  "description": "Calendar and life organizer by D.K Apps.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

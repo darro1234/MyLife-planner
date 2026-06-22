@@ -1,10 +1,12 @@
-const CACHE_NAME = "moj-organizer-pwa-v1-6";
+const CACHE_NAME = "mylife-planner-pwa-v1-7";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
   "./icon-192.svg",
-  "./icon-512.svg"
+  "./icon-512.svg",
+  "./icon-dark.svg",
+  "./mandala-logo.svg"
 ];
 
 self.addEventListener("install", event => {

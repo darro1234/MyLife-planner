@@ -1,24 +1,24 @@
-MYLIFE PLANNER PWA v1.6
+MYLIFE PLANNER PWA v1.7
+D.K Apps
 
-Nowe:
-- Zakładka Kalendarz
-- Widok miesiąca
-- Kropki na dniach z wydarzeniami
-- Kliknięcie dnia pokazuje wydarzenia z tego dnia
-- Integracja z istniejącymi wydarzeniami z localStorage
+Nowe w v1.7:
+- Nowa minimalistyczna ikona mandali
+- Logo w nagłówku zmienia kolor razem z wybranym motywem
+- Dodany tryb wyglądu: Jasny / Ciemny / Systemowy
+- Zachowane motywy kolorystyczne
+- Zachowana pełna funkcjonalność aplikacji
+- Gotowe do publikacji na GitHub Pages
 
-Wgraj na GitHub Pages wszystkie pliki z tej paczki:
+Pliki do wgrania na GitHub:
 - index.html
 - manifest.json
 - service-worker.js
 - icon-192.svg
 - icon-512.svg
-
-Nowe w v1.6:
-- Motywy kolorystyczne: Lavender, Ocean, Forest, Sunset, Rose, Graphite
-- Wybór stylu okien: zaokrąglone, lekko zaokrąglone, proste
-- Ustawienia zapisywane lokalnie
-
+- icon-dark.svg
+- mandala-logo.svg
+- README.txt
+- LICENSE.txt
 
 © 2026 D.K Apps
 This project is proprietary software.
