@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-  <title>MyLife Planner PWA v1.8</title>
+  <title>MyLife Planner PWA v1.8.1</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -597,7 +597,35 @@
       .quick{grid-template-columns:1fr}
       h1{font-size:22px}
     }
-  </style>
+  
+    body.mode-dark .empty-state,
+    body.mode-dark .empty,
+    body.mode-dark .placeholder,
+    body.mode-dark .no-events,
+    body.mode-dark .history-empty{
+      background:rgba(255,255,255,.04)!important;
+      border:1px dashed rgba(255,255,255,.12)!important;
+      color:#94a3b8!important;
+    }
+
+    body.mode-dark .tab.active{
+      background:rgba(109,93,252,.18)!important;
+      border:1px solid rgba(109,93,252,.30)!important;
+      box-shadow:0 0 18px rgba(109,93,252,.12);
+    }
+
+    body.theme-forest{
+      --primary:#22c55e;
+      --primary-dark:#16a34a;
+    }
+
+    body.mode-dark [style*="background:#fff"],
+    body.mode-dark [style*="background: #fff"]{
+      background:rgba(255,255,255,.04)!important;
+      color:#94a3b8!important;
+    }
+
+</style>
 </head>
 <body>
   <div class="app">
@@ -624,7 +652,7 @@
     </div>
         <div>
           <h1 data-i18n="appName">MyLife Planner</h1>
-          <div class="version"><span data-i18n="versionText">Kalendarz i organizer PWA v1.8</span></div>
+          <div class="version"><span data-i18n="versionText">Kalendarz i organizer PWA v1.8.1</span></div>
         </div>
       </div>
       <div class="date-pill" id="todayPill"></div>
@@ -824,7 +852,7 @@
         <h2>D.K Apps</h2>
         <div style="text-align:center;padding:20px 10px;">
           <div style="font-size:28px;font-weight:900;">MyLife Planner</div>
-          <div style="margin-top:8px;color:#666;">Version 1.8</div>
+          <div style="margin-top:8px;color:#666;">Version 1.8.1</div>
           <div style="margin-top:24px;font-weight:800;">Developed by</div>
           <div style="font-size:22px;font-weight:900;margin-top:8px;">D.K Apps</div>
           <div>Dariusz Kaniewski</div>
@@ -883,7 +911,7 @@
     const translations = {
       pl:{
         appName:"MyLife Planner",
-        versionText:"Kalendarz i organizer PWA v1.8",
+        versionText:"Kalendarz i organizer PWA v1.8.1",
         navToday:"Dzisiaj",
         navAdd:"Dodaj",
         navCalendar:"Kalendarz",
@@ -911,7 +939,7 @@
       },
       en:{
         appName:"MyLife Planner",
-        versionText:"Calendar and Organizer PWA v1.8",
+        versionText:"Calendar and Organizer PWA v1.8.1",
         navToday:"Today",
         navAdd:"Add",
         navCalendar:"Calendar",

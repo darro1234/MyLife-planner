@@ -37,3 +37,9 @@ Nie wgrywaj pliku ZIP jako strony. Rozpakuj ZIP i wgraj pliki.
 © 2026 D.K Apps
 This project is proprietary software.
 All Rights Reserved.
+
+
+v1.8.1:
+- poprawione białe pola w Dark Mode
+- lepsza aktywna zakładka
+- delikatniejszy motyw Forest
