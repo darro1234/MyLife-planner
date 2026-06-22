@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-  <title>MyLife Planner PWA v1.8.1</title>
+  <title>MyLife Planner PWA v1.8.2</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -625,6 +625,65 @@
       color:#94a3b8!important;
     }
 
+
+    .brand-byline{
+      font-size:12px;
+      color:var(--primary);
+      font-weight:900;
+      margin-top:3px;
+      letter-spacing:.02em;
+    }
+    .about-box{
+      text-align:center;
+      padding:20px 10px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:rgba(255,255,255,.48);
+    }
+    body.mode-dark .about-box{
+      background:rgba(255,255,255,.04)!important;
+      border-color:var(--line)!important;
+    }
+    .about-app-name{
+      font-size:28px;
+      font-weight:950;
+      margin-bottom:6px;
+    }
+    .about-version{
+      color:var(--muted);
+      font-weight:800;
+    }
+    .about-made{
+      margin-top:24px;
+      font-weight:850;
+      color:var(--muted);
+    }
+    .about-brand{
+      font-size:24px;
+      font-weight:950;
+      color:var(--primary);
+      margin-top:8px;
+    }
+    .about-copy{
+      margin-top:20px;
+      font-weight:750;
+      color:var(--muted);
+    }
+    .about-slogan{
+      margin-top:24px;
+      font-style:italic;
+      font-weight:850;
+      color:var(--text);
+    }
+    .app-footer{
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:750;
+      padding:22px 0 0;
+      opacity:.82;
+    }
+
 </style>
 </head>
 <body>
@@ -652,7 +711,8 @@
     </div>
         <div>
           <h1 data-i18n="appName">MyLife Planner</h1>
-          <div class="version"><span data-i18n="versionText">Kalendarz i organizer PWA v1.8.1</span></div>
+          <div class="version"><span data-i18n="versionText">Kalendarz i organizer PWA v1.8.2</span></div>
+          <div class="brand-byline">by D.K Apps</div>
         </div>
       </div>
       <div class="date-pill" id="todayPill"></div>
@@ -681,6 +741,24 @@
         <div class="card">
           <h2><span id="iconBellHead"></span> Nadchodzące</h2>
           <div id="upcomingList"></div>
+
+          <div>
+            <label>O aplikacji</label>
+            <div class="about-box">
+              <div class="about-app-name">MyLife Planner</div>
+              <div class="about-version">Version 1.8.2</div>
+
+              <div class="about-made">Developed by</div>
+              <div class="about-brand">D.K Apps</div>
+              <div>Dariusz Kaniewski</div>
+
+              <div class="about-copy">© 2026 D.K Apps</div>
+              <div>All Rights Reserved</div>
+
+              <div class="about-slogan">Mniej chaosu. Więcej spokoju.</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -852,7 +930,7 @@
         <h2>D.K Apps</h2>
         <div style="text-align:center;padding:20px 10px;">
           <div style="font-size:28px;font-weight:900;">MyLife Planner</div>
-          <div style="margin-top:8px;color:#666;">Version 1.8.1</div>
+          <div style="margin-top:8px;color:#666;">Version 1.8.2</div>
           <div style="margin-top:24px;font-weight:800;">Developed by</div>
           <div style="font-size:22px;font-weight:900;margin-top:8px;">D.K Apps</div>
           <div>Dariusz Kaniewski</div>
@@ -911,7 +989,7 @@
     const translations = {
       pl:{
         appName:"MyLife Planner",
-        versionText:"Kalendarz i organizer PWA v1.8.1",
+        versionText:"Kalendarz i organizer PWA v1.8.2",
         navToday:"Dzisiaj",
         navAdd:"Dodaj",
         navCalendar:"Kalendarz",
@@ -939,7 +1017,7 @@
       },
       en:{
         appName:"MyLife Planner",
-        versionText:"Calendar and Organizer PWA v1.8.1",
+        versionText:"Calendar and Organizer PWA v1.8.2",
         navToday:"Today",
         navAdd:"Add",
         navCalendar:"Calendar",
