@@ -747,7 +747,8 @@ h1 {
   height: 19px;
 }
 
-.mini-action.done {
+.mini-action.done,
+.mini-action.restore {
   border-color: rgba(22, 135, 93, 0.25);
   color: var(--done);
 }
@@ -761,8 +762,13 @@ h1 {
 .mini-action.series-edit,
 .mini-action.duplicate,
 .mini-action.share,
+.mini-action.restore,
 .mini-action.series-delete {
   color: var(--primary-strong);
+}
+
+.mini-action.restore {
+  color: var(--done);
 }
 
 .mini-action.duplicate,

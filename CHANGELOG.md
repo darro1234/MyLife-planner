@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.07
+- Uproszczono ikone przywracania zakonczonych spraw do czytelnego luku ze strzalka.
+
+## 2.06
+- Poprawiono ikone przywracania na rowny okrag zakonczony strzalka.
+
+## 2.05
+- Poprawiono ikone przywracania zakonczonych spraw.
+
+## 2.04
+- Dodano przywracanie zakonczonych spraw z Historii do aktywnych.
+- W kartach zakonczonych spraw pojawia sie przycisk Przywroc.
+
 ## 2.03
 - Szybkie sprawy dodawane plusem trafiaja do kategorii "Szybka sprawa".
 - Dodano ikone plusa dla kategorii szybkich spraw.

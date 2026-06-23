@@ -1,5 +1,5 @@
 ﻿const CONFIG = {
-  appVersion: "2.03",
+  appVersion: "2.07",
   storageKey: "mylife_planner_v1_events",
   langKey: "mylife_planner_v1_lang",
   appearanceKey: "mylife_planner_v1_appearance",
@@ -49,6 +49,7 @@ const ICON_PATHS = {
   actionShare: ["M12 15V4", "M8 8l4-4 4 4", "M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"],
   actionDone: ["M5 12.5l4 4L19 6.5"],
   actionDelete: ["M5 7h14", "M10 11v6", "M14 11v6", "M8 7l1-3h6l1 3", "M7 7l1 13h8l1-13"],
+  actionRestore: ["M12 6a6 6 0 1 1-5.2 3", "M6.8 9H4.2V6.4"],
   actionSeries: ["M4.5 12a4 4 0 0 1 4-4h5.8", "M11.8 5.5 14.3 8l-2.5 2.5", "M19.5 12a4 4 0 0 1-4 4H9.7", "M12.2 18.5 9.7 16l2.5-2.5"],
   actionSeriesDelete: ["M4.5 12a4 4 0 0 1 4-4h5.8", "M11.8 5.5 14.3 8l-2.5 2.5", "M19.5 12a4 4 0 0 1-4 4H9.7", "M12.2 18.5 9.7 16l2.5-2.5"],
   weatherSun: ["M12 3v2", "M12 19v2", "M3 12h2", "M19 12h2", "M5.6 5.6 7 7", "M17 17l1.4 1.4", "M18.4 5.6 17 7", "M7 17l-1.4 1.4"],
@@ -94,9 +95,9 @@ const TRANSLATIONS = {
     aboutPrivacyTitle: "Prywatność i dane",
     aboutPrivacyText: "Twoje wydarzenia są zapisywane lokalnie w tej przeglądarce. Aplikacja nie wysyła ich na serwer. Możesz wykonać kopię zapasową albo usunąć dane z przeglądarki.",
     aboutChangesTitle: "Ostatnie zmiany",
-    aboutChange203: "2.03 · Szybkie sprawy mają własną kategorię.",
-    aboutChange202: "2.02 · Dodano szybką sprawę na ekranie Dzisiaj.",
-    aboutChange201: "2.01 · Dodano własne kategorie.",
+    aboutChange207: "2.07 · Uproszczono ikonę przywracania.",
+    aboutChange206: "2.06 · Poprawiono ikonę przywracania na okrąg ze strzałką.",
+    aboutChange205: "2.05 · Poprawiono ikonę przywracania.",
     aboutCopyright: "© 2026 D.K. Wszelkie prawa zastrzeżone.",
     navToday: "Dzisiaj",
     navAdd: "Dodaj",
@@ -180,6 +181,8 @@ const TRANSLATIONS = {
     duplicateEvent: "Duplikuj",
     shareEvent: "Udostępnij",
     deleteEvent: "Usuń",
+    restoreEvent: "Przywróć",
+    eventRestored: "Przywrócono sprawę",
     deleteSeries: "Usuń serię",
     deleteSeriesConfirm: "Usunąć całą serię cykliczną?",
     seriesDeleted: "Usunięto serię",
@@ -282,9 +285,9 @@ const TRANSLATIONS = {
     aboutPrivacyTitle: "Privacy and data",
     aboutPrivacyText: "Your events are saved locally in this browser. The app does not send them to a server. You can create a backup or remove the data from the browser.",
     aboutChangesTitle: "Latest changes",
-    aboutChange203: "2.03 · Quick tasks now use their own category.",
-    aboutChange202: "2.02 · Added quick task on the Today screen.",
-    aboutChange201: "2.01 · Added custom categories.",
+    aboutChange207: "2.07 · Simplified the restore icon.",
+    aboutChange206: "2.06 · Changed the restore icon to a circular arrow.",
+    aboutChange205: "2.05 · Improved the restore icon.",
     aboutCopyright: "© 2026 D.K. All rights reserved.",
     navToday: "Today",
     navAdd: "Add",
@@ -368,6 +371,8 @@ const TRANSLATIONS = {
     duplicateEvent: "Duplicate",
     shareEvent: "Share",
     deleteEvent: "Delete",
+    restoreEvent: "Restore",
+    eventRestored: "Task restored",
     deleteSeries: "Delete series",
     deleteSeriesConfirm: "Delete the whole recurring series?",
     seriesDeleted: "Series deleted",
@@ -1536,6 +1541,7 @@ function renderEvent(event) {
     ? `<span class="priority-badge priority-${sanitize(priority)}">${sanitize(priorityLabel(priority))}</span>`
     : "";
   const doneLabel = sanitize(text("confirmOk"));
+  const restoreLabel = sanitize(text("restoreEvent"));
   const deleteLabel = sanitize(text("deleteEvent"));
   const editLabel = sanitize(text("editEvent"));
   const editSeriesLabel = sanitize(text("editSeries"));
@@ -1543,6 +1549,7 @@ function renderEvent(event) {
   const shareLabel = sanitize(text("shareEvent"));
   const deleteSeriesLabel = sanitize(text("deleteSeries"));
   const doneButton = event.done ? "" : `<button class="mini-action done" type="button" data-action="done" data-id="${sanitize(event.id)}" aria-label="${doneLabel}" title="${doneLabel}">${svgIcon("actionDone", "action-icon")}</button>`;
+  const restoreButton = event.done ? `<button class="mini-action restore" type="button" data-action="restore" data-id="${sanitize(event.id)}" aria-label="${restoreLabel}" title="${restoreLabel}">${svgIcon("actionRestore", "action-icon")}</button>` : "";
   const editButton = event.done ? "" : `<button class="mini-action edit" type="button" data-action="edit" data-id="${sanitize(event.id)}" aria-label="${editLabel}" title="${editLabel}">${svgIcon("actionEdit", "action-icon")}</button>`;
   const editSeriesButton = event.done || !event.seriesId ? "" : `<button class="mini-action series-edit" type="button" data-action="edit-series" data-id="${sanitize(event.id)}" aria-label="${editSeriesLabel}" title="${editSeriesLabel}">${svgIcon("actionSeries", "action-icon")}</button>`;
   const duplicateButton = event.done ? "" : `<button class="mini-action duplicate" type="button" data-action="duplicate" data-id="${sanitize(event.id)}" aria-label="${duplicateLabel}" title="${duplicateLabel}">${svgIcon("actionCopy", "action-icon")}</button>`;
@@ -1571,6 +1578,7 @@ function renderEvent(event) {
           ${editButton}
           ${duplicateButton}
           ${shareButton}
+          ${restoreButton}
           ${doneButton}
           <button class="mini-action delete" type="button" data-action="delete" data-id="${sanitize(event.id)}" aria-label="${deleteLabel}" title="${deleteLabel}">${svgIcon("actionDelete", "action-icon")}</button>
         </div>
@@ -2080,6 +2088,15 @@ function markDone(id) {
   showToast(state.lang === "pl" ? "Oznaczono jako zrobione" : "Marked as done");
 }
 
+function restoreEvent(id) {
+  state.events = state.events.map(event => (
+    event.id === id ? { ...event, done: false, doneAt: null } : event
+  ));
+  saveEvents();
+  render();
+  showToast(text("eventRestored"));
+}
+
 async function deleteEvent(id) {
   if (!await showConfirm(text("deleteEventConfirm"), { icon: "history" })) return;
   state.events = state.events.filter(event => event.id !== id);
@@ -2107,6 +2124,7 @@ async function handleEventAction(event) {
   if (button.dataset.action === "share") await shareEvent(button.dataset.id);
   if (button.dataset.action === "delete-series") await deleteEventSeries(button.dataset.id);
   if (button.dataset.action === "done") markDone(button.dataset.id);
+  if (button.dataset.action === "restore") restoreEvent(button.dataset.id);
   if (button.dataset.action === "delete") await deleteEvent(button.dataset.id);
 }
 
