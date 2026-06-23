@@ -1,4 +1,4 @@
-const CACHE_NAME = "mylife-planner-pwa-v1-17";
+const CACHE_NAME = "mylife-planner-pwa-v1-94";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -31,7 +31,39 @@ self.addEventListener("activate", event => {
   self.clients.claim();
 });
 
+async function handleShareTarget(request) {
+  const formData = await request.formData();
+  const file = formData.get("ics");
+  const content = file && typeof file.text === "function"
+    ? await file.text()
+    : String(formData.get("text") || "");
+  const payload = {
+    content,
+    name: file?.name || "shared.ics",
+    receivedAt: new Date().toISOString()
+  };
+
+  const cache = await caches.open(CACHE_NAME);
+  await cache.put("shared-ics.json", new Response(JSON.stringify(payload), {
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "no-store"
+    }
+  }));
+
+  return Response.redirect("./index.html?shareTarget=ics", 303);
+}
+
 self.addEventListener("fetch", event => {
+  const url = new URL(event.request.url);
+  if (event.request.method === "POST" && url.pathname.endsWith("/share-target")) {
+    event.respondWith(handleShareTarget(event.request));
+    return;
+  }
+  if (event.request.method !== "GET") {
+    event.respondWith(fetch(event.request));
+    return;
+  }
   event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request)));
 });
 
