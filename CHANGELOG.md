@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.99
+- Zmieniono tekst glownego przycisku kreatora z "Rozpocznij" na "Zapisz".
+
+## 1.98
+- Dodano wiekszy padding i minimalna szerokosc dla przyciskow kreatora pierwszego uruchomienia.
+
 ## 1.97
 - Zmniejszono optycznie ikone ustawien w dolnym pasku mobilnym, zeby lepiej pasowala do pozostalych ikon.
 

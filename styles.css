@@ -1328,6 +1328,14 @@ textarea:focus {
   margin-top: 18px;
 }
 
+.onboarding-actions .primary-action,
+.onboarding-actions .secondary-action {
+  min-width: 92px;
+  padding: 0 18px;
+  justify-content: center;
+  text-align: center;
+}
+
 .about-dialog {
   position: relative;
   width: min(760px, 100%);
