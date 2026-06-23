@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=1.99" />
+  <link rel="stylesheet" href="styles.css?v=2.03" />
 </head>
 <body>
   <div class="app-shell">
@@ -94,6 +94,10 @@
               <span id="iconTodayHead"></span>
               <h2 data-i18n="todayPanel">Dzisiaj i zaległe</h2>
             </div>
+            <form class="quick-task-form" id="quickTaskForm">
+              <input id="quickTaskInput" type="text" data-i18n-placeholder="quickTaskPlaceholder" placeholder="Wpisz szybką sprawę..." />
+              <button class="primary-action quick-task-button" type="submit" aria-label="Dodaj szybką sprawę" data-i18n-aria="quickTaskAdd">+</button>
+            </form>
             <div id="todayList" class="list"></div>
           </article>
 
@@ -135,13 +139,16 @@
             <h2 data-i18n="agendaTitle">Agenda</h2>
           </div>
           <div class="agenda-toolbar">
-            <label for="agendaLimit" data-i18n="agendaLimitLabel">Liczba wpisów</label>
-            <select id="agendaLimit">
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-              <option value="all" data-i18n="agendaLimitAll">Wszystkie</option>
-            </select>
+            <div>
+              <label for="agendaLimit" data-i18n="agendaLimitLabel">Liczba wpisów</label>
+              <select id="agendaLimit">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="all" data-i18n="agendaLimitAll">Wszystkie</option>
+              </select>
+            </div>
+            <button class="backup-btn agenda-print-btn" id="printAgendaBtn" type="button" data-i18n="printAgenda">Drukuj</button>
           </div>
           <div class="agenda-grid">
             <section class="agenda-section">
@@ -191,15 +198,7 @@
               <div class="form-row">
                 <div>
                   <label for="category" data-i18n="categoryLabel">Kategoria</label>
-                  <select id="category">
-                    <option>Rodzina</option>
-                    <option>Finanse</option>
-                    <option>Urzędy</option>
-                    <option>Zdrowie</option>
-                    <option>Auto</option>
-                    <option>Praca</option>
-                    <option>Inne</option>
-                  </select>
+                  <select id="category"></select>
                 </div>
                 <div>
                   <label for="priority" data-i18n="priorityLabel">Priorytet</label>
@@ -291,16 +290,7 @@
             </div>
             <div>
               <label for="filterCategory" data-i18n="filterCategoryLabel">Kategoria</label>
-              <select id="filterCategory">
-                <option value="all" data-i18n="filterAll">Wszystkie</option>
-                <option>Rodzina</option>
-                <option>Finanse</option>
-                <option>Urzędy</option>
-                <option>Zdrowie</option>
-                <option>Auto</option>
-                <option>Praca</option>
-                <option>Inne</option>
-              </select>
+              <select id="filterCategory"></select>
             </div>
             <div>
               <label for="filterPriority" data-i18n="filterPriorityLabel">Priorytet</label>
@@ -412,19 +402,21 @@
             </div>
 
             <div class="settings-group">
+              <label for="customCategoryInput" data-i18n="customCategoriesLabel">Własne kategorie</label>
+              <div class="category-add-row">
+                <input id="customCategoryInput" type="text" data-i18n-placeholder="customCategoryPlaceholder" placeholder="np. Wycieczki, Dom, Hobby" />
+                <button class="backup-btn" id="addCategoryBtn" type="button" data-i18n="addCategory">Dodaj kategorię</button>
+              </div>
+              <div class="category-chip-list" id="customCategoryList"></div>
+              <p data-i18n="customCategoriesNote">Własne kategorie pojawią się w formularzu, filtrach i kreatorze.</p>
+            </div>
+
+            <div class="settings-group">
               <label data-i18n="defaultsLabel">Domyślne dla nowych spraw</label>
               <div class="form-row compact-settings-row">
                 <div>
                   <label for="defaultCategory" data-i18n="categoryLabel">Kategoria</label>
-                  <select id="defaultCategory">
-                    <option>Rodzina</option>
-                    <option>Finanse</option>
-                    <option>Urzędy</option>
-                    <option>Zdrowie</option>
-                    <option>Auto</option>
-                    <option>Praca</option>
-                    <option>Inne</option>
-                  </select>
+                  <select id="defaultCategory"></select>
                 </div>
                 <div>
                   <label for="defaultPriority" data-i18n="priorityLabel">Priorytet</label>
@@ -549,14 +541,15 @@
         <section>
           <h3 data-i18n="aboutChangesTitle">Ostatnie zmiany</h3>
           <ul>
+            <li data-i18n="aboutChange203">2.03 · Szybkie sprawy mają własną kategorię.</li>
+            <li data-i18n="aboutChange202">2.02 · Dodano szybką sprawę na ekranie Dzisiaj.</li>
+            <li data-i18n="aboutChange201">2.01 · Dodano własne kategorie.</li>
             <li data-i18n="aboutChange199">1.99 · Zmieniono przycisk kreatora na Zapisz.</li>
-            <li data-i18n="aboutChange198">1.98 · Poprawiono odstępy w przyciskach kreatora.</li>
-            <li data-i18n="aboutChange197">1.97 · Zmniejszono optycznie ikonę ustawień w pasku mobilnym.</li>
           </ul>
         </section>
       </div>
       <div class="about-footer">
-        <span id="aboutFooterText">© 2026 D.K. Wszelkie prawa zastrzeżone. · Wersja 1.99</span>
+        <span id="aboutFooterText">© 2026 D.K. Wszelkie prawa zastrzeżone. · Wersja 2.03</span>
       </div>
     </div>
   </div>
@@ -602,15 +595,7 @@
         </div>
         <div class="onboarding-field">
           <label for="onboardingCategory" data-i18n="categoryLabel">Kategoria</label>
-          <select id="onboardingCategory">
-            <option>Rodzina</option>
-            <option>Finanse</option>
-            <option>Urzędy</option>
-            <option>Zdrowie</option>
-            <option>Auto</option>
-            <option>Praca</option>
-            <option>Inne</option>
-          </select>
+          <select id="onboardingCategory"></select>
         </div>
         <div class="onboarding-field">
           <label for="onboardingPriority" data-i18n="priorityLabel">Priorytet</label>
@@ -649,6 +634,6 @@
       </div>
     </div>
   </div>
-  <script src="app.js?v=1.99" defer></script>
+  <script src="app.js?v=2.03" defer></script>
 </body>
 </html>

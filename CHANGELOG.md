@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.03
+- Szybkie sprawy dodawane plusem trafiaja do kategorii "Szybka sprawa".
+- Dodano ikone plusa dla kategorii szybkich spraw.
+
+## 2.02
+- Dodano szybkie dodawanie sprawy na ekranie Dzisiaj.
+- Szybka sprawa korzysta z domyslnej kategorii, priorytetu i przypomnienia.
+
+## 2.01
+- Dodano wlasne kategorie w ustawieniach.
+- Wlasne kategorie sa widoczne w formularzu, filtrach, kreatorze i domyslnych ustawieniach.
+- Dodano eksport i import wlasnych kategorii w kopii zapasowej.
+
+## 2.00
+- Dodano przycisk Drukuj w widoku Agenda.
+- Dodano czysty styl wydruku Agendy bez nawigacji i przyciskow akcji.
+
 ## 1.99
 - Zmieniono tekst glownego przycisku kreatora z "Rozpocznij" na "Zapisz".
 

@@ -1,11 +1,12 @@
 ﻿const CONFIG = {
-  appVersion: "1.99",
+  appVersion: "2.03",
   storageKey: "mylife_planner_v1_events",
   langKey: "mylife_planner_v1_lang",
   appearanceKey: "mylife_planner_v1_appearance",
   themeKey: "mylife_planner_v1_theme",
   radiusKey: "mylife_planner_v1_radius",
   defaultCategoryKey: "mylife_planner_v1_default_category",
+  customCategoriesKey: "mylife_planner_v1_custom_categories",
   defaultPriorityKey: "mylife_planner_v1_default_priority",
   defaultReminderKey: "mylife_planner_v1_default_reminder",
   agendaLimitKey: "mylife_planner_v1_agenda_limit",
@@ -58,6 +59,9 @@ const ICON_PATHS = {
   weatherStorm: ["M6.5 15h10.2a4.3 4.3 0 0 0 .7-8.5 5.8 5.8 0 0 0-11.1 1.7A3.5 3.5 0 0 0 6.5 15z", "M13 15l-3 5h3l-1 3 4-6h-3l1-2"]
 };
 
+const QUICK_TASK_CATEGORY = "Szybka sprawa";
+const DEFAULT_CATEGORIES = ["Rodzina", "Finanse", "Urzędy", "Zdrowie", "Auto", "Praca", QUICK_TASK_CATEGORY, "Inne"];
+
 const ICON_EXTRA = {
   today: '<circle cx="12" cy="12" r="4"/>',
   history: '<circle cx="12" cy="12" r="6"/>',
@@ -90,9 +94,9 @@ const TRANSLATIONS = {
     aboutPrivacyTitle: "Prywatność i dane",
     aboutPrivacyText: "Twoje wydarzenia są zapisywane lokalnie w tej przeglądarce. Aplikacja nie wysyła ich na serwer. Możesz wykonać kopię zapasową albo usunąć dane z przeglądarki.",
     aboutChangesTitle: "Ostatnie zmiany",
-    aboutChange199: "1.99 · Zmieniono przycisk kreatora na Zapisz.",
-    aboutChange198: "1.98 · Poprawiono odstępy w przyciskach kreatora.",
-    aboutChange197: "1.97 · Zmniejszono optycznie ikonę ustawień w pasku mobilnym.",
+    aboutChange203: "2.03 · Szybkie sprawy mają własną kategorię.",
+    aboutChange202: "2.02 · Dodano szybką sprawę na ekranie Dzisiaj.",
+    aboutChange201: "2.01 · Dodano własne kategorie.",
     aboutCopyright: "© 2026 D.K. Wszelkie prawa zastrzeżone.",
     navToday: "Dzisiaj",
     navAdd: "Dodaj",
@@ -120,6 +124,9 @@ const TRANSLATIONS = {
     onboardingStart: "Zapisz",
     onboardingDone: "Kreator zakończony",
     todayPanel: "Dzisiaj i zaległe",
+    quickTaskPlaceholder: "Wpisz szybką sprawę...",
+    quickTaskAdd: "Dodaj szybką sprawę",
+    quickTaskSaved: "Dodano szybką sprawę",
     upcomingPanel: "Nadchodzące",
     agendaTitle: "Agenda",
     agendaToday: "Dzisiaj",
@@ -128,6 +135,7 @@ const TRANSLATIONS = {
     agendaLater: "Później",
     agendaLimitLabel: "Liczba wpisów",
     agendaLimitAll: "Wszystkie",
+    printAgenda: "Drukuj",
     agendaMore: "Pokazano {shown} z {total} spraw. Zmień limit, aby zobaczyć więcej.",
     agendaEmptyToday: "Na dzisiaj nie ma żadnych spraw.",
     agendaEmptyTomorrow: "Na jutro nie ma żadnych spraw.",
@@ -139,6 +147,14 @@ const TRANSLATIONS = {
     dateLabel: "Data",
     timeLabel: "Godzina opcjonalnie",
     categoryLabel: "Kategoria",
+    customCategoriesLabel: "Własne kategorie",
+    customCategoryPlaceholder: "np. Wycieczki, Dom, Hobby",
+    addCategory: "Dodaj kategorię",
+    customCategoriesNote: "Własne kategorie pojawią się w formularzu, filtrach i kreatorze.",
+    customCategoriesEmpty: "Nie dodano własnych kategorii.",
+    categoryAdded: "Dodano kategorię",
+    categoryExists: "Taka kategoria już istnieje",
+    categoryRemoved: "Usunięto kategorię",
     priorityLabel: "Priorytet",
     priorityNormal: "Normalne",
     priorityImportant: "Ważne",
@@ -266,9 +282,9 @@ const TRANSLATIONS = {
     aboutPrivacyTitle: "Privacy and data",
     aboutPrivacyText: "Your events are saved locally in this browser. The app does not send them to a server. You can create a backup or remove the data from the browser.",
     aboutChangesTitle: "Latest changes",
-    aboutChange199: "1.99 · Renamed the setup button to Save.",
-    aboutChange198: "1.98 · Improved spacing in setup buttons.",
-    aboutChange197: "1.97 · Visually reduced the settings icon in the mobile bar.",
+    aboutChange203: "2.03 · Quick tasks now use their own category.",
+    aboutChange202: "2.02 · Added quick task on the Today screen.",
+    aboutChange201: "2.01 · Added custom categories.",
     aboutCopyright: "© 2026 D.K. All rights reserved.",
     navToday: "Today",
     navAdd: "Add",
@@ -296,6 +312,9 @@ const TRANSLATIONS = {
     onboardingStart: "Save",
     onboardingDone: "Setup complete",
     todayPanel: "Today and overdue",
+    quickTaskPlaceholder: "Type a quick task...",
+    quickTaskAdd: "Add quick task",
+    quickTaskSaved: "Quick task added",
     upcomingPanel: "Upcoming",
     agendaTitle: "Agenda",
     agendaToday: "Today",
@@ -304,6 +323,7 @@ const TRANSLATIONS = {
     agendaLater: "Later",
     agendaLimitLabel: "Items shown",
     agendaLimitAll: "All",
+    printAgenda: "Print",
     agendaMore: "Showing {shown} of {total} items. Change the limit to see more.",
     agendaEmptyToday: "No tasks for today.",
     agendaEmptyTomorrow: "No tasks for tomorrow.",
@@ -315,6 +335,14 @@ const TRANSLATIONS = {
     dateLabel: "Date",
     timeLabel: "Optional time",
     categoryLabel: "Category",
+    customCategoriesLabel: "Custom categories",
+    customCategoryPlaceholder: "e.g. Trips, Home, Hobby",
+    addCategory: "Add category",
+    customCategoriesNote: "Custom categories will appear in the form, filters, and setup.",
+    customCategoriesEmpty: "No custom categories added.",
+    categoryAdded: "Category added",
+    categoryExists: "This category already exists",
+    categoryRemoved: "Category removed",
     priorityLabel: "Priority",
     priorityNormal: "Normal",
     priorityImportant: "Important",
@@ -432,6 +460,7 @@ const state = {
   appearance: localStorage.getItem(CONFIG.appearanceKey) || "light",
   theme: savedTheme === "amber" ? "lavender" : (savedTheme || "lavender"),
   radius: localStorage.getItem(CONFIG.radiusKey) || "soft",
+  customCategories: readCustomCategories(),
   defaultCategory: localStorage.getItem(CONFIG.defaultCategoryKey) || "Inne",
   defaultPriority: localStorage.getItem(CONFIG.defaultPriorityKey) || "normal",
   defaultReminder: localStorage.getItem(CONFIG.defaultReminderKey) || "0",
@@ -653,12 +682,48 @@ function readEvents() {
   }
 }
 
+function normalizeCategoryName(value) {
+  return String(value || "").trim().replace(/\s+/g, " ");
+}
+
+function categoryKey(value) {
+  return normalizeCategoryName(value).toLocaleLowerCase("pl-PL");
+}
+
+function uniqueCategories(categories) {
+  const seen = new Set();
+  return categories
+    .map(normalizeCategoryName)
+    .filter(Boolean)
+    .filter(category => {
+      const key = categoryKey(category);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+}
+
+function readCustomCategories() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(CONFIG.customCategoriesKey) || "[]");
+    if (!Array.isArray(parsed)) return [];
+    const defaultKeys = new Set(DEFAULT_CATEGORIES.map(categoryKey));
+    return uniqueCategories(parsed).filter(category => !defaultKeys.has(categoryKey(category)));
+  } catch {
+    return [];
+  }
+}
+
 function saveEvents() {
   localStorage.setItem(CONFIG.storageKey, JSON.stringify(state.events));
 }
 
 function savePreference(key, value) {
   localStorage.setItem(key, value);
+}
+
+function saveCustomCategories() {
+  localStorage.setItem(CONFIG.customCategoriesKey, JSON.stringify(state.customCategories));
 }
 
 function backupPayload() {
@@ -672,6 +737,7 @@ function backupPayload() {
       appearance: state.appearance,
       theme: state.theme,
       radius: state.radius,
+      customCategories: state.customCategories,
       defaultCategory: state.defaultCategory,
       defaultPriority: state.defaultPriority,
       defaultReminder: state.defaultReminder,
@@ -721,6 +787,11 @@ function applyImportedPreferences(preferences = {}) {
   if (["light", "dark", "system"].includes(preferences.appearance)) state.appearance = preferences.appearance;
   if (CONFIG.themes.includes(preferences.theme)) state.theme = preferences.theme;
   if (CONFIG.radii.includes(preferences.radius)) state.radius = preferences.radius;
+  if (Array.isArray(preferences.customCategories)) {
+    const defaultKeys = new Set(DEFAULT_CATEGORIES.map(categoryKey));
+    state.customCategories = uniqueCategories(preferences.customCategories)
+      .filter(category => !defaultKeys.has(categoryKey(category)));
+  }
   if (eventCategoryOptions().includes(preferences.defaultCategory)) state.defaultCategory = preferences.defaultCategory;
   if (["normal", "important", "urgent"].includes(preferences.defaultPriority)) state.defaultPriority = preferences.defaultPriority;
   if (["0", "1", "3", "7", "14"].includes(String(preferences.defaultReminder))) state.defaultReminder = String(preferences.defaultReminder);
@@ -745,6 +816,7 @@ function restoreDefaultState() {
   state.appearance = "light";
   state.theme = "lavender";
   state.radius = "soft";
+  state.customCategories = [];
   state.defaultCategory = "Inne";
   state.defaultPriority = "normal";
   state.defaultReminder = "0";
@@ -766,6 +838,7 @@ function clearStoredAppData() {
     CONFIG.appearanceKey,
     CONFIG.themeKey,
     CONFIG.radiusKey,
+    CONFIG.customCategoriesKey,
     CONFIG.defaultCategoryKey,
     CONFIG.defaultPriorityKey,
     CONFIG.defaultReminderKey,
@@ -1293,6 +1366,11 @@ function applyLanguage() {
   document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
     element.placeholder = text(element.dataset.i18nPlaceholder);
   });
+  document.querySelectorAll("[data-i18n-aria]").forEach(element => {
+    const label = text(element.dataset.i18nAria);
+    element.setAttribute("aria-label", label);
+    element.setAttribute("title", label);
+  });
   updateNavLabels();
   updateVersionText();
   document.querySelectorAll(".language-btn").forEach(button => {
@@ -1302,6 +1380,7 @@ function applyLanguage() {
   document.querySelectorAll(".appearance-btn").forEach(button => {
     button.classList.toggle("active", button.dataset.appearance === state.appearance);
   });
+  refreshCategoryControls();
   syncDefaultControls();
   renderHeaderDateTime();
   setEditingMode(Boolean(state.editingId));
@@ -1367,7 +1446,75 @@ function highestPriority(events) {
 }
 
 function eventCategoryOptions() {
-  return ["Rodzina", "Finanse", "Urzędy", "Zdrowie", "Auto", "Praca", "Inne"];
+  return uniqueCategories([
+    ...DEFAULT_CATEGORIES,
+    ...state.customCategories,
+    state.defaultCategory,
+    ...state.events.map(event => event.category)
+  ]);
+}
+
+function renderCategorySelect(selectId, selectedValue, includeAll = false) {
+  const options = eventCategoryOptions();
+  const allOption = includeAll ? `<option value="all" data-i18n="filterAll">${sanitize(text("filterAll"))}</option>` : "";
+  const value = selectedValue && (selectedValue === "all" || options.includes(selectedValue))
+    ? selectedValue
+    : (includeAll ? "all" : options[0]);
+  $(selectId).innerHTML = `${allOption}${options.map(category =>
+    `<option value="${sanitize(category)}">${sanitize(category)}</option>`
+  ).join("")}`;
+  $(selectId).value = value || (includeAll ? "all" : options[0]);
+  if (selectId === "filterCategory") state.filters.category = $(selectId).value;
+}
+
+function renderCustomCategories() {
+  const list = $("customCategoryList");
+  if (!state.customCategories.length) {
+    list.innerHTML = `<div class="empty compact-empty">${text("customCategoriesEmpty")}</div>`;
+    return;
+  }
+  list.innerHTML = state.customCategories.map(category => `
+    <div class="category-chip">
+      <span>${sanitize(category)}</span>
+      <button type="button" data-category-delete="${sanitize(category)}" aria-label="${sanitize(text("deleteEvent"))}">×</button>
+    </div>
+  `).join("");
+}
+
+function refreshCategoryControls() {
+  renderCategorySelect("category", $("category").value || state.defaultCategory);
+  renderCategorySelect("defaultCategory", state.defaultCategory);
+  renderCategorySelect("onboardingCategory", $("onboardingCategory").value || state.defaultCategory);
+  renderCategorySelect("filterCategory", state.filters.category, true);
+  renderCustomCategories();
+}
+
+function addCustomCategory() {
+  const input = $("customCategoryInput");
+  const category = normalizeCategoryName(input.value);
+  if (!category) return;
+  if (eventCategoryOptions().some(existing => categoryKey(existing) === categoryKey(category))) {
+    showToast(text("categoryExists"));
+    return;
+  }
+  state.customCategories.push(category);
+  state.customCategories = uniqueCategories(state.customCategories);
+  saveCustomCategories();
+  input.value = "";
+  refreshCategoryControls();
+  showToast(text("categoryAdded"));
+}
+
+function deleteCustomCategory(category) {
+  state.customCategories = state.customCategories.filter(item => categoryKey(item) !== categoryKey(category));
+  if (categoryKey(state.defaultCategory) === categoryKey(category)) {
+    state.defaultCategory = "Inne";
+    savePreference(CONFIG.defaultCategoryKey, state.defaultCategory);
+  }
+  saveCustomCategories();
+  refreshCategoryControls();
+  render();
+  showToast(text("categoryRemoved"));
 }
 
 function categoryIcon(category) {
@@ -1378,6 +1525,7 @@ function categoryIcon(category) {
   if (normalized.includes("zdrow") || normalized.includes("health")) return svgIcon("health", "cat-icon");
   if (normalized.includes("auto") || normalized.includes("car")) return svgIcon("car", "cat-icon");
   if (normalized.includes("prac") || normalized.includes("work")) return svgIcon("work", "cat-icon");
+  if (normalized.includes("szyb") || normalized.includes("quick")) return svgIcon("plus", "cat-icon");
   return svgIcon("other", "cat-icon");
 }
 
@@ -1501,6 +1649,15 @@ function renderAgenda() {
     : "";
 }
 
+function printAgenda() {
+  setAboutOpen(false);
+  document.body.classList.add("print-agenda");
+  const cleanup = () => document.body.classList.remove("print-agenda");
+  window.addEventListener("afterprint", cleanup, { once: true });
+  window.print();
+  window.setTimeout(cleanup, 1200);
+}
+
 function sortedEvents(done) {
   const direction = done ? -1 : 1;
   return state.events
@@ -1620,6 +1777,42 @@ function eventDataFromForm() {
     reminderText: reminder.selectedOptions[0]?.textContent || "",
     note: $("note").value.trim()
   };
+}
+
+function normalizedTitle(value) {
+  return String(value || "").trim().replace(/\s+/g, " ");
+}
+
+function selectedReminderText(value) {
+  const option = Array.from($("defaultReminder").options).find(item => item.value === String(value));
+  return option?.textContent || "";
+}
+
+function addQuickTask(event) {
+  event.preventDefault();
+  const input = $("quickTaskInput");
+  const title = normalizedTitle(input.value);
+  if (!title) {
+    input.focus();
+    return;
+  }
+
+  state.events.push(createEventRecord({
+    title,
+    date: todayISO,
+    time: "",
+    category: QUICK_TASK_CATEGORY,
+    priority: state.defaultPriority,
+    reminder: state.defaultReminder,
+    reminderText: selectedReminderText(state.defaultReminder),
+    note: "",
+    recurrence: "none",
+    recurrenceText: ""
+  }));
+  input.value = "";
+  saveEvents();
+  render();
+  showToast(text("quickTaskSaved"));
 }
 
 function addEvent(eventData) {
@@ -1981,6 +2174,7 @@ async function completeOnboarding() {
   savePreference(CONFIG.appearanceKey, state.appearance);
   savePreference(CONFIG.themeKey, state.theme);
   savePreference(CONFIG.radiusKey, state.radius);
+  saveCustomCategories();
   savePreference(CONFIG.defaultCategoryKey, state.defaultCategory);
   savePreference(CONFIG.defaultPriorityKey, state.defaultPriority);
   savePreference(CONFIG.defaultReminderKey, state.defaultReminder);
@@ -2207,6 +2401,8 @@ function bindEvents() {
     setView("dashboard");
   });
 
+  $("quickTaskForm").addEventListener("submit", addQuickTask);
+
   $("date").addEventListener("change", () => {
     $("repeatUntil").min = $("date").value || todayISO;
   });
@@ -2253,6 +2449,18 @@ function bindEvents() {
     state.agendaLimit = event.target.value;
     savePreference(CONFIG.agendaLimitKey, state.agendaLimit);
     renderAgenda();
+  });
+  $("printAgendaBtn").addEventListener("click", printAgenda);
+  $("addCategoryBtn").addEventListener("click", addCustomCategory);
+  $("customCategoryInput").addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      addCustomCategory();
+    }
+  });
+  $("customCategoryList").addEventListener("click", event => {
+    const button = event.target.closest("[data-category-delete]");
+    if (button) deleteCustomCategory(button.dataset.categoryDelete);
   });
 
   document.querySelectorAll(".language-btn").forEach(button => {
