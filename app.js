@@ -1,5 +1,5 @@
 ﻿const CONFIG = {
-  appVersion: "1.94",
+  appVersion: "1.97",
   storageKey: "mylife_planner_v1_events",
   langKey: "mylife_planner_v1_lang",
   appearanceKey: "mylife_planner_v1_appearance",
@@ -66,7 +66,7 @@ const ICON_EXTRA = {
   work: '<rect x="4" y="7" width="16" height="12" rx="2"/><path d="M9 7V5h6v2"/><path d="M4 12h16"/>',
   brand: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 4.2c2.1 2.2 2.1 4.1 0 5.8-2.1-1.7-2.1-3.6 0-5.8z"/><path d="M19.8 12c-2.2 2.1-4.1 2.1-5.8 0 1.7-2.1 3.6-2.1 5.8 0z"/><path d="M12 19.8c-2.1-2.2-2.1-4.1 0-5.8 2.1 1.7 2.1 3.6 0 5.8z"/><path d="M4.2 12c2.2-2.1 4.1-2.1 5.8 0-1.7 2.1-3.6 2.1-5.8 0z"/>',
   weatherSun: '<circle cx="12" cy="12" r="4"/>',
-  settings: '<path d="M12 3.2l1.1 2.2 2.4.4.4 2.4 2.1 1.2-1 2.6 1 2.6-2.1 1.2-.4 2.4-2.4.4L12 20.8l-1.1-2.2-2.4-.4-.4-2.4L6 14.6 7 12 6 9.4l2.1-1.2.4-2.4 2.4-.4L12 3.2z"/><circle cx="12" cy="12" r="3.1"/>'
+  settings: '<g transform="translate(12 12) scale(.86) translate(-12 -12)"><path d="M9.7 2.9h4.6l.5 2.2c.6.2 1.2.5 1.7.9l2.1-.7 2.3 4-1.6 1.5c.1.4.1.8.1 1.2s0 .8-.1 1.2l1.6 1.5-2.3 4-2.1-.7c-.5.4-1.1.7-1.7.9l-.5 2.2H9.7l-.5-2.2c-.6-.2-1.2-.5-1.7-.9l-2.1.7-2.3-4 1.6-1.5a7.5 7.5 0 0 1 0-2.4L3.1 9.3l2.3-4 2.1.7c.5-.4 1.1-.7 1.7-.9l.5-2.2z"/><circle cx="12" cy="12" r="3.2"/></g>'
 };
 
 const TRANSLATIONS = {
@@ -90,9 +90,9 @@ const TRANSLATIONS = {
     aboutPrivacyTitle: "Prywatność i dane",
     aboutPrivacyText: "Twoje wydarzenia są zapisywane lokalnie w tej przeglądarce. Aplikacja nie wysyła ich na serwer. Możesz wykonać kopię zapasową albo usunąć dane z przeglądarki.",
     aboutChangesTitle: "Ostatnie zmiany",
-    aboutChange194: "1.94 · Poprawiono rysowanie ikon pogody i ustawień.",
-    aboutChange193: "1.93 · Dodano ikonki pogody i poprawiono ikonę ustawień.",
-    aboutChange192: "1.92 · Ujednolicono przyciski kreatora przy starcie z resztą ustawień.",
+    aboutChange197: "1.97 · Zmniejszono optycznie ikonę ustawień w pasku mobilnym.",
+    aboutChange196: "1.96 · Wyrównano rozmiar ikon w dolnym pasku mobilnym.",
+    aboutChange195: "1.95 · Poprawiono kształt ikony ustawień na bardziej okrągły.",
     aboutCopyright: "© 2026 D.K. Wszelkie prawa zastrzeżone.",
     navToday: "Dzisiaj",
     navAdd: "Dodaj",
@@ -266,9 +266,9 @@ const TRANSLATIONS = {
     aboutPrivacyTitle: "Privacy and data",
     aboutPrivacyText: "Your events are saved locally in this browser. The app does not send them to a server. You can create a backup or remove the data from the browser.",
     aboutChangesTitle: "Latest changes",
-    aboutChange194: "1.94 · Improved weather and settings icon rendering.",
-    aboutChange193: "1.93 · Added weather icons and improved the settings icon.",
-    aboutChange192: "1.92 · Aligned startup setup buttons with the rest of settings.",
+    aboutChange197: "1.97 · Visually reduced the settings icon in the mobile bar.",
+    aboutChange196: "1.96 · Balanced mobile bottom bar icon sizing.",
+    aboutChange195: "1.95 · Improved the settings icon shape to look more circular.",
     aboutCopyright: "© 2026 D.K. All rights reserved.",
     navToday: "Today",
     navAdd: "Add",

@@ -1462,13 +1462,18 @@ textarea:focus {
 }
 
 .bottom-nav .nav-icon {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
+}
+
+.bottom-nav .nav-icon svg {
+  width: 30px;
+  height: 30px;
 }
 
 .bottom-nav .brand-nav .nav-icon {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
 }
 
 @media (max-width: 900px) {

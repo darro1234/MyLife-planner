@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.97
+- Zmniejszono optycznie ikone ustawien w dolnym pasku mobilnym, zeby lepiej pasowala do pozostalych ikon.
+
+## 1.96
+- Powiekszono ikony w dolnym pasku mobilnym, zeby byly optycznie spojne z ikona ustawien.
+
+## 1.95
+- Poprawiono ksztalt ikony ustawien, zeby wygladala bardziej okraglo.
+
 ## 1.94
 - Poprawiono rysowanie ikon pogody, zeby nie wyswietlaly sie jako kropka.
 - Uproszczono ikone ustawien na rowniejsze kolo zebate.
