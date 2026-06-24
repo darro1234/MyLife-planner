@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.09
+- Zmieniono ikone aplikacji na ciemna, neutralna i spojna z ciemnym motywem ikon iPhone.
+- Usunieto kolorowy gradient i turkusowy cien z ikon instalacyjnych.
+
+## 2.08
+- Poprawiono okno Info, aby pokazywalo tylko trzy ostatnie zmiany.
+- Usunieto pozostalosci starego wpisu 1.99 z listy ostatnich zmian.
+
 ## 2.07
 - Uproszczono ikone przywracania zakonczonych spraw do czytelnego luku ze strzalka.
 
