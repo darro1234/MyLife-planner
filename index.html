@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#3b5bdb" />
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2.09" />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2.09" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2.09" />
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2.09" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2.11" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2.11" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2.11" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2.11" />
   <meta name="apple-mobile-web-app-title" content="MyLife" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=2.09" />
+  <link rel="stylesheet" href="styles.css?v=2.11" />
 </head>
 <body>
   <div class="app-shell">
@@ -541,14 +541,14 @@
         <section>
           <h3 data-i18n="aboutChangesTitle">Ostatnie zmiany</h3>
           <ul>
+            <li data-i18n="aboutChange211">2.11 · Naprawiono przechodzenie kroków kreatora.</li>
+            <li data-i18n="aboutChange210">2.10 · Połączono kreator z samouczkiem.</li>
             <li data-i18n="aboutChange209">2.09 · Dodano ciemną ikonę aplikacji spójną z iPhone.</li>
-            <li data-i18n="aboutChange208">2.08 · Poprawiono listę ostatnich zmian w Info.</li>
-            <li data-i18n="aboutChange207">2.07 · Uproszczono ikonę przywracania.</li>
           </ul>
         </section>
       </div>
       <div class="about-footer">
-        <span id="aboutFooterText">© 2026 D.K. Wszelkie prawa zastrzeżone. · Wersja 2.09</span>
+        <span id="aboutFooterText">© 2026 D.K. Wszelkie prawa zastrzeżone. · Wersja 2.11</span>
       </div>
     </div>
   </div>
@@ -558,81 +558,119 @@
         <div class="about-mark" id="onboardingMark"></div>
         <div>
           <h2 id="onboardingTitle" data-i18n="onboardingTitle">Witaj w MyLife Planner</h2>
-          <p data-i18n="onboardingIntro">Ustaw kilka rzeczy i zacznij korzystać z organizera po swojemu.</p>
+          <p id="onboardingIntro" data-i18n="onboardingIntro">Kreator poprowadzi Cię przez pierwsze ustawienia i pokaże najważniejsze funkcje.</p>
         </div>
       </div>
 
-      <div class="onboarding-grid">
-        <div class="onboarding-field">
-          <label for="onboardingAppearance" data-i18n="appearanceLabel">Wygląd</label>
-          <select id="onboardingAppearance">
-            <option value="light" data-i18n="appearanceLight">Jasny</option>
-            <option value="dark" data-i18n="appearanceDark">Ciemny</option>
-            <option value="system" data-i18n="appearanceSystem">Systemowy</option>
-          </select>
-        </div>
-        <div class="onboarding-field">
-          <label for="onboardingTheme" data-i18n="themeLabel">Motyw kolorystyczny</label>
-          <select id="onboardingTheme">
-            <option value="lavender">Lavender</option>
-            <option value="ocean">Ocean</option>
-            <option value="forest">Forest</option>
-            <option value="pistachio">Pistachio</option>
-            <option value="rainbow">Rainbow</option>
-            <option value="sunset">Sunset</option>
-            <option value="rose">Rose</option>
-            <option value="graphite">Graphite</option>
-          </select>
-        </div>
-        <div class="onboarding-field">
-          <label for="onboardingRadius" data-i18n="radiusLabel">Styl okien</label>
-          <select id="onboardingRadius">
-            <option value="soft" data-i18n="radiusSoft">Zaokrąglone</option>
-            <option value="medium" data-i18n="radiusMedium">Lekko zaokrąglone</option>
-            <option value="square" data-i18n="radiusSquare">Proste</option>
-          </select>
-        </div>
-        <div class="onboarding-field">
-          <label for="onboardingCategory" data-i18n="categoryLabel">Kategoria</label>
-          <select id="onboardingCategory"></select>
-        </div>
-        <div class="onboarding-field">
-          <label for="onboardingPriority" data-i18n="priorityLabel">Priorytet</label>
-          <select id="onboardingPriority">
-            <option value="normal" data-i18n="priorityNormal">Normalne</option>
-            <option value="important" data-i18n="priorityImportant">Ważne</option>
-            <option value="urgent" data-i18n="priorityUrgent">Pilne</option>
-          </select>
-        </div>
-        <div class="onboarding-field">
-          <label for="onboardingReminder" data-i18n="reminderLabel">Przypomnienie</label>
-          <select id="onboardingReminder">
-            <option value="0">W dniu wydarzenia</option>
-            <option value="1">1 dzień wcześniej</option>
-            <option value="3">3 dni wcześniej</option>
-            <option value="7">7 dni wcześniej</option>
-            <option value="14">14 dni wcześniej</option>
-          </select>
-        </div>
-      </div>
+      <div class="onboarding-progress" id="onboardingProgress"></div>
 
-      <label class="onboarding-check">
-        <input id="onboardingWeather" type="checkbox" />
-        <span data-i18n="onboardingWeather">Włącz pogodę w nagłówku</span>
-      </label>
-      <p class="onboarding-note" data-i18n="onboardingWeatherNote">Lokalizacja służy tylko do pobrania temperatury i nie jest zapisywana.</p>
+      <section class="onboarding-step" data-onboarding-step="0">
+        <p class="onboarding-lead" data-i18n="onboardingWelcomeText">W kilku krótkich krokach ustawisz wygląd, domyślne sprawy, powiadomienia i zobaczysz, jak korzystać z aplikacji.</p>
+      </section>
 
-      <label class="onboarding-check">
-        <input id="onboardingNotifications" type="checkbox" />
-        <span data-i18n="onboardingNotifications">Włącz powiadomienia</span>
-      </label>
+      <section class="onboarding-step hidden" data-onboarding-step="1">
+        <h3 data-i18n="onboardingAppearanceTitle">Dopasuj wygląd</h3>
+        <p class="onboarding-note" data-i18n="onboardingAppearanceText">Wybierz tryb, kolor i styl okien. Zmiany zobaczysz od razu.</p>
+        <div class="onboarding-grid">
+          <div class="onboarding-field">
+            <label for="onboardingAppearance" data-i18n="appearanceLabel">Wygląd</label>
+            <select id="onboardingAppearance">
+              <option value="light" data-i18n="appearanceLight">Jasny</option>
+              <option value="dark" data-i18n="appearanceDark">Ciemny</option>
+              <option value="system" data-i18n="appearanceSystem">Systemowy</option>
+            </select>
+          </div>
+          <div class="onboarding-field">
+            <label for="onboardingTheme" data-i18n="themeLabel">Motyw kolorystyczny</label>
+            <select id="onboardingTheme">
+              <option value="lavender">Lavender</option>
+              <option value="ocean">Ocean</option>
+              <option value="forest">Forest</option>
+              <option value="pistachio">Pistachio</option>
+              <option value="rainbow">Rainbow</option>
+              <option value="sunset">Sunset</option>
+              <option value="rose">Rose</option>
+              <option value="graphite">Graphite</option>
+            </select>
+          </div>
+          <div class="onboarding-field">
+            <label for="onboardingRadius" data-i18n="radiusLabel">Styl okien</label>
+            <select id="onboardingRadius">
+              <option value="soft" data-i18n="radiusSoft">Zaokrąglone</option>
+              <option value="medium" data-i18n="radiusMedium">Lekko zaokrąglone</option>
+              <option value="square" data-i18n="radiusSquare">Proste</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="onboarding-step hidden" data-onboarding-step="2">
+        <h3 data-i18n="onboardingDefaultsTitle">Ustaw domyślne sprawy</h3>
+        <p class="onboarding-note" data-i18n="onboardingDefaultsText">Te wartości aplikacja podpowie przy dodawaniu nowych spraw.</p>
+        <div class="onboarding-grid">
+          <div class="onboarding-field">
+            <label for="onboardingCategory" data-i18n="categoryLabel">Kategoria</label>
+            <select id="onboardingCategory"></select>
+          </div>
+          <div class="onboarding-field">
+            <label for="onboardingPriority" data-i18n="priorityLabel">Priorytet</label>
+            <select id="onboardingPriority">
+              <option value="normal" data-i18n="priorityNormal">Normalne</option>
+              <option value="important" data-i18n="priorityImportant">Ważne</option>
+              <option value="urgent" data-i18n="priorityUrgent">Pilne</option>
+            </select>
+          </div>
+          <div class="onboarding-field">
+            <label for="onboardingReminder" data-i18n="reminderLabel">Przypomnienie</label>
+            <select id="onboardingReminder">
+              <option value="0">W dniu wydarzenia</option>
+              <option value="1">1 dzień wcześniej</option>
+              <option value="3">3 dni wcześniej</option>
+              <option value="7">7 dni wcześniej</option>
+              <option value="14">14 dni wcześniej</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="onboarding-step hidden" data-onboarding-step="3">
+        <h3 data-i18n="onboardingServicesTitle">Włącz pomocne dodatki</h3>
+        <p class="onboarding-note" data-i18n="onboardingServicesText">Możesz włączyć pogodę w nagłówku i powiadomienia o sprawach.</p>
+        <label class="onboarding-check">
+          <input id="onboardingWeather" type="checkbox" />
+          <span data-i18n="onboardingWeather">Włącz pogodę w nagłówku</span>
+        </label>
+        <p class="onboarding-note" data-i18n="onboardingWeatherNote">Lokalizacja służy tylko do pobrania temperatury i nie jest zapisywana.</p>
+
+        <label class="onboarding-check">
+          <input id="onboardingNotifications" type="checkbox" />
+          <span data-i18n="onboardingNotifications">Włącz powiadomienia</span>
+        </label>
+      </section>
+
+      <section class="onboarding-step hidden" data-onboarding-step="4">
+        <h3 data-i18n="onboardingGuideTitle">Najważniejsze funkcje</h3>
+        <div class="onboarding-guide">
+          <p data-i18n="onboardingGuideQuick">Plus na ekranie Dzisiaj dodaje szybką sprawę.</p>
+          <p data-i18n="onboardingGuideAgenda">Agenda pokazuje plan w najbliższej kolejności.</p>
+          <p data-i18n="onboardingGuideCalendar">Kalendarz oznacza dni z ważnymi i pilnymi sprawami.</p>
+          <p data-i18n="onboardingGuideHistory">Historia przechowuje zakończone sprawy i pozwala je przywrócić.</p>
+        </div>
+      </section>
+
+      <section class="onboarding-step hidden" data-onboarding-step="5">
+        <h3 data-i18n="onboardingFinishTitle">Gotowe</h3>
+        <p class="onboarding-lead" data-i18n="onboardingFinishText">Wszystkie ustawienia możesz później zmienić w sekcji Ustawienia aplikacji.</p>
+      </section>
 
       <div class="onboarding-actions">
         <button class="secondary-action" id="onboardingSkip" type="button" data-i18n="onboardingSkip">Pomiń</button>
-        <button class="primary-action" id="onboardingStart" type="button" data-i18n="onboardingStart">Zapisz</button>
+        <button class="secondary-action hidden" id="onboardingBack" type="button" data-i18n="onboardingBack">Wstecz</button>
+        <button class="primary-action" id="onboardingNext" type="button" data-i18n="onboardingNext">Dalej</button>
+        <button class="primary-action hidden" id="onboardingStart" type="button" data-i18n="onboardingStart">Zapisz</button>
       </div>
     </div>
   </div>
-  <script src="app.js?v=2.09" defer></script>
+  <script src="app.js?v=2.11" defer></script>
 </body>
 </html>

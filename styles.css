@@ -1348,6 +1348,7 @@ textarea:focus {
 }
 
 .onboarding-dialog {
+  position: relative;
   width: min(760px, 100%);
   max-height: min(780px, calc(100vh - 36px));
   overflow: auto;
@@ -1357,6 +1358,27 @@ textarea:focus {
   color: var(--text);
   box-shadow: 0 28px 80px rgba(15, 23, 42, 0.3);
   padding: 22px;
+}
+
+.onboarding-dialog::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -76px;
+  top: -64px;
+  pointer-events: none;
+  opacity: .075;
+  background:
+    radial-gradient(circle at center, transparent 0 22%, currentColor 22% 23%, transparent 23% 42%, currentColor 42% 43%, transparent 43%),
+    conic-gradient(from 0deg, transparent 0 7%, currentColor 7% 9%, transparent 9% 19%, currentColor 19% 21%, transparent 21% 31%, currentColor 31% 33%, transparent 33% 43%, currentColor 43% 45%, transparent 45% 55%, currentColor 55% 57%, transparent 57% 67%, currentColor 67% 69%, transparent 69% 79%, currentColor 79% 81%, transparent 81% 91%, currentColor 91% 93%, transparent 93%);
+  border-radius: 50%;
+  color: var(--primary);
+}
+
+.onboarding-dialog > * {
+  position: relative;
+  z-index: 1;
 }
 
 .onboarding-hero {
@@ -1381,10 +1403,49 @@ textarea:focus {
   line-height: 1.45;
 }
 
+.onboarding-progress {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  margin-bottom: 16px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--primary-strong);
+  background: var(--primary-soft);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.onboarding-step.hidden,
+.onboarding-actions .hidden {
+  display: none;
+}
+
+.onboarding-step {
+  min-height: 260px;
+}
+
+.onboarding-step h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.onboarding-lead {
+  margin: 0;
+  max-width: 58ch;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.55;
+}
+
 .onboarding-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  margin-top: 14px;
   margin-bottom: 16px;
 }
 
@@ -1407,6 +1468,25 @@ textarea:focus {
   width: 18px;
   height: 18px;
   accent-color: var(--primary);
+}
+
+.onboarding-guide {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.onboarding-guide p {
+  margin: 0;
+  min-height: 74px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small);
+  background: rgba(var(--surface-rgb), .72);
+  padding: 14px;
+  color: var(--text);
+  font-weight: 800;
+  line-height: 1.4;
 }
 
 .onboarding-actions {
@@ -1653,6 +1733,10 @@ textarea:focus {
   }
 
   .onboarding-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .onboarding-guide {
     grid-template-columns: 1fr;
   }
 

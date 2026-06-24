@@ -1,5 +1,5 @@
 ﻿const CONFIG = {
-  appVersion: "2.09",
+  appVersion: "2.11",
   storageKey: "mylife_planner_v1_events",
   langKey: "mylife_planner_v1_lang",
   appearanceKey: "mylife_planner_v1_appearance",
@@ -95,9 +95,9 @@ const TRANSLATIONS = {
     aboutPrivacyTitle: "Prywatność i dane",
     aboutPrivacyText: "Twoje wydarzenia są zapisywane lokalnie w tej przeglądarce. Aplikacja nie wysyła ich na serwer. Możesz wykonać kopię zapasową albo usunąć dane z przeglądarki.",
     aboutChangesTitle: "Ostatnie zmiany",
+    aboutChange211: "2.11 · Naprawiono przechodzenie kroków kreatora.",
+    aboutChange210: "2.10 · Połączono kreator z samouczkiem.",
     aboutChange209: "2.09 · Dodano ciemną ikonę aplikacji spójną z iPhone.",
-    aboutChange208: "2.08 · Poprawiono listę ostatnich zmian w Info.",
-    aboutChange207: "2.07 · Uproszczono ikonę przywracania.",
     aboutCopyright: "© 2026 D.K. Wszelkie prawa zastrzeżone.",
     navToday: "Dzisiaj",
     navAdd: "Dodaj",
@@ -117,7 +117,23 @@ const TRANSLATIONS = {
     onboardingOpen: "Uruchom teraz",
     onboardingSettingsNote: "Włącz, jeśli kreator ma pojawić się przy następnym uruchomieniu. Możesz go też uruchomić ręcznie.",
     onboardingTitle: "Witaj w MyLife Planner",
-    onboardingIntro: "Ustaw kilka rzeczy i zacznij korzystać z organizera po swojemu.",
+    onboardingIntro: "Kreator poprowadzi Cię przez pierwsze ustawienia i pokaże najważniejsze funkcje.",
+    onboardingWelcomeText: "W kilku krótkich krokach ustawisz wygląd, domyślne sprawy, powiadomienia i zobaczysz, jak korzystać z aplikacji.",
+    onboardingAppearanceTitle: "Dopasuj wygląd",
+    onboardingAppearanceText: "Wybierz tryb, kolor i styl okien. Zmiany zobaczysz od razu.",
+    onboardingDefaultsTitle: "Ustaw domyślne sprawy",
+    onboardingDefaultsText: "Te wartości aplikacja podpowie przy dodawaniu nowych spraw.",
+    onboardingServicesTitle: "Włącz pomocne dodatki",
+    onboardingServicesText: "Możesz włączyć pogodę w nagłówku i powiadomienia o sprawach.",
+    onboardingGuideTitle: "Najważniejsze funkcje",
+    onboardingGuideQuick: "Plus na ekranie Dzisiaj dodaje szybką sprawę.",
+    onboardingGuideAgenda: "Agenda pokazuje plan w najbliższej kolejności.",
+    onboardingGuideCalendar: "Kalendarz oznacza dni z ważnymi i pilnymi sprawami.",
+    onboardingGuideHistory: "Historia przechowuje zakończone sprawy i pozwala je przywrócić.",
+    onboardingFinishTitle: "Gotowe",
+    onboardingFinishText: "Wszystkie ustawienia możesz później zmienić w sekcji Ustawienia aplikacji.",
+    onboardingBack: "Wstecz",
+    onboardingNext: "Dalej",
     onboardingWeather: "Włącz pogodę w nagłówku",
     onboardingWeatherNote: "Lokalizacja służy tylko do pobrania temperatury i nie jest zapisywana.",
     onboardingNotifications: "Włącz powiadomienia",
@@ -285,9 +301,9 @@ const TRANSLATIONS = {
     aboutPrivacyTitle: "Privacy and data",
     aboutPrivacyText: "Your events are saved locally in this browser. The app does not send them to a server. You can create a backup or remove the data from the browser.",
     aboutChangesTitle: "Latest changes",
+    aboutChange211: "2.11 · Fixed setup step navigation.",
+    aboutChange210: "2.10 · Combined setup with a short guide.",
     aboutChange209: "2.09 · Added a dark app icon matching iPhone themes.",
-    aboutChange208: "2.08 · Fixed the latest changes list in Info.",
-    aboutChange207: "2.07 · Simplified the restore icon.",
     aboutCopyright: "© 2026 D.K. All rights reserved.",
     navToday: "Today",
     navAdd: "Add",
@@ -307,7 +323,23 @@ const TRANSLATIONS = {
     onboardingOpen: "Open now",
     onboardingSettingsNote: "Turn on if setup should appear on the next launch. You can also open it manually.",
     onboardingTitle: "Welcome to MyLife Planner",
-    onboardingIntro: "Set a few things and start using the organizer your way.",
+    onboardingIntro: "Setup will guide you through the first settings and show the most important features.",
+    onboardingWelcomeText: "In a few short steps you will set appearance, default tasks, notifications, and learn how to use the app.",
+    onboardingAppearanceTitle: "Adjust appearance",
+    onboardingAppearanceText: "Choose mode, color, and window style. You will see changes immediately.",
+    onboardingDefaultsTitle: "Set task defaults",
+    onboardingDefaultsText: "The app will suggest these values when adding new tasks.",
+    onboardingServicesTitle: "Enable helpful extras",
+    onboardingServicesText: "You can enable header weather and task notifications.",
+    onboardingGuideTitle: "Key features",
+    onboardingGuideQuick: "The plus on Today adds a quick task.",
+    onboardingGuideAgenda: "Agenda shows your plan in the nearest order.",
+    onboardingGuideCalendar: "Calendar marks days with important and urgent tasks.",
+    onboardingGuideHistory: "History stores completed tasks and lets you restore them.",
+    onboardingFinishTitle: "Ready",
+    onboardingFinishText: "You can later change all settings in the app Settings section.",
+    onboardingBack: "Back",
+    onboardingNext: "Next",
     onboardingWeather: "Enable weather in the header",
     onboardingWeatherNote: "Location is used only to fetch temperature and is not saved.",
     onboardingNotifications: "Enable notifications",
@@ -478,6 +510,7 @@ const state = {
   editingId: null,
   editingMode: "single",
   onboardingSnapshot: null,
+  onboardingStep: 0,
   filters: {
     query: "",
     category: "all",
@@ -567,6 +600,27 @@ function syncOnboardingControls() {
   $("onboardingNotifications").checked = state.notificationsEnabled;
 }
 
+function setOnboardingStep(step) {
+  const steps = Array.from(document.querySelectorAll("[data-onboarding-step]"));
+  const maxStep = steps.length - 1;
+  state.onboardingStep = Math.min(Math.max(step, 0), maxStep);
+  steps.forEach(element => {
+    element.classList.toggle("hidden", Number(element.dataset.onboardingStep) !== state.onboardingStep);
+  });
+  $("onboardingBack").classList.toggle("hidden", state.onboardingStep === 0);
+  $("onboardingNext").classList.toggle("hidden", state.onboardingStep === maxStep);
+  $("onboardingStart").classList.toggle("hidden", state.onboardingStep !== maxStep);
+  $("onboardingProgress").textContent = `${state.onboardingStep + 1} / ${steps.length}`;
+}
+
+function nextOnboardingStep() {
+  setOnboardingStep(state.onboardingStep + 1);
+}
+
+function previousOnboardingStep() {
+  setOnboardingStep(state.onboardingStep - 1);
+}
+
 function syncOnboardingAutoControls() {
   const autoEnabled = localStorage.getItem(CONFIG.onboardingDoneKey) !== "true";
   document.querySelectorAll(".onboarding-auto-btn").forEach(button => {
@@ -607,7 +661,8 @@ function setOnboardingOpen(open) {
   if (open) {
     captureOnboardingSnapshot();
     syncOnboardingControls();
-    $("onboardingStart").focus();
+    setOnboardingStep(0);
+    $("onboardingNext").focus();
   }
 }
 
@@ -2379,6 +2434,8 @@ function bindEvents() {
   $("onboardingAppearance").addEventListener("change", applyOnboardingPreview);
   $("onboardingTheme").addEventListener("change", applyOnboardingPreview);
   $("onboardingRadius").addEventListener("change", applyOnboardingPreview);
+  $("onboardingBack").addEventListener("click", previousOnboardingStep);
+  $("onboardingNext").addEventListener("click", nextOnboardingStep);
   $("onboardingStart").addEventListener("click", completeOnboarding);
 
   document.addEventListener("keydown", event => {

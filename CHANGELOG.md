@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.11
+- Naprawiono ukrywanie krokow kreatora, aby pokazywal tylko jeden ekran naraz.
+- Przycisk Zapisz pojawia sie dopiero na ostatnim kroku.
+
+## 2.10
+- Polaczono kreator pierwszego uruchomienia z krotkim samouczkiem.
+- Dodano kroki kreatora, przyciski Dalej/Wstecz i subtelna grafike mandali w tle.
+
 ## 2.09
 - Zmieniono ikone aplikacji na ciemna, neutralna i spojna z ciemnym motywem ikon iPhone.
 - Usunieto kolorowy gradient i turkusowy cien z ikon instalacyjnych.
